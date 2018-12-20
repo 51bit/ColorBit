@@ -578,7 +578,7 @@ namespace ColorBit {
      * Init ColorBit.
      * @param pin the pin where the ColorBit is connected.
      */
-    //% blockId="ColorBit_create" block="51bit leds at pin %pin| as %mode"
+    //% blockId="ColorBit_initcolorbit" block="51bit leds at pin %pin| as %mode"
     //% weight=90 blockGap=8
     //% parts="ColorBit"
     //% trackArgs=0,2
