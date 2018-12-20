@@ -156,6 +156,7 @@ namespace ColorBit {
         //% blockId="ColorBit_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue" 
         //% weight=85 blockGap=8
         //% parts="ColorBit"
+        //% advanced=true
         showRainbow(startHue: number = 1, endHue: number = 360) {
             if (this._length <= 0) return;
 
@@ -392,6 +393,7 @@ namespace ColorBit {
         //% blockId="ColorBit_range" block="%strip|range from %start|with %length|leds"
         //% parts="ColorBit"
         //% blockSetVariable=range
+        //% advanced=true
         range(start: number = 0, length: number = 25): Strip {
             start = start >> 0;
             length = length >> 0;
@@ -558,12 +560,35 @@ namespace ColorBit {
     //% parts="ColorBit"
     //% trackArgs=0,2
     //% blockSetVariable=strip
+    //% advanced=true
     export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 25, mode: NeoPixelMode): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
         strip.start = 0;
         strip._length = numleds;
+        strip._mode = mode;
+        strip._matrixWidth = 0;
+        strip.setBrightness(50)
+        strip.setPin(pin)
+        return strip;
+    }
+    
+    /**
+     * Create a new NeoPixel driver for `numleds` LEDs.
+     * @param pin the pin where the ColorBit is connected.
+     */
+    //% blockId="ColorBit_create" block="51bit leds at pin %pin| as %mode"
+    //% weight=90 blockGap=8
+    //% parts="ColorBit"
+    //% trackArgs=0,2
+    //% blockSetVariable=strip
+    export function create(pin: DigitalPin = DigitalPin.P0, mode: NeoPixelMode): Strip {
+        let strip = new Strip();
+        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
+        strip.buf = pins.createBuffer(25 * stride);
+        strip.start = 0;
+        strip._length = 25;
         strip._mode = mode;
         strip._matrixWidth = 0;
         strip.setBrightness(50)
