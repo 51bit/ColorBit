@@ -137,8 +137,8 @@ namespace ColorBit {
                 else 
                     this.setPixelRGB(i >> 0, rgb >> 0);
             }
-            for (let i = 0; i < 9; ++i) {
-                const index=8-i;
+            for (let i = 16; i < 25; ++i) {
+                const index=25-i;
                 const a=pixeloffset2 >> index;
                 if((a & 1)==1)
                     this.setPixelRGB(i >> 0, 0);
@@ -551,7 +551,7 @@ namespace ColorBit {
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the ColorBit is connected.
-     * @param numleds number of leds in the strip, eg: 24,30,60,64
+     * @param numleds number of leds in the strip, eg: 25
      */
     //% blockId="ColorBit_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
     //% weight=90 blockGap=8
@@ -566,7 +566,7 @@ namespace ColorBit {
         strip._length = numleds;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(255)
+        strip.setBrightness(50)
         strip.setPin(pin)
         return strip;
     }
