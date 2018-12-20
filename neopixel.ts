@@ -132,7 +132,7 @@ namespace ColorBit {
             for (let i = 0; i < 16; ++i) {
                 const index=16-i;
                 const a=pixeloffset1 >> index;
-                if((a & 1)==1) 
+                if((a & 1)==0) 
                     this.setPixelRGB(i >> 0, 0);
                 else 
                     this.setPixelRGB(i >> 0, rgb >> 0);
@@ -140,7 +140,7 @@ namespace ColorBit {
             for (let i = 16; i < 25; ++i) {
                 const index=32-i;
                 const a=pixeloffset2 >> index;
-                if((a & 1)==1)
+                if((a & 1)==0)
                     this.setPixelRGB(i >> 0, 0);
                 else 
                     this.setPixelRGB(i >> 0, rgb >> 0);
