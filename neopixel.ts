@@ -130,11 +130,13 @@ namespace ColorBit {
                 pixeloffset2=0x4400;
             }
             for (let i = 0; i < 16; ++i) {
-                if((pixeloffset1>>(15-i))&1==1) this.setPixelRGB(i >> 0, 0 >> 0);
+                const index=15-i;
+                if((pixeloffset1 >> index)&1==1) this.setPixelRGB(i >> 0, 0);
                 else this.setPixelRGB(i >> 0, rgb >> 0);
             }
-            for (i = 0; i < 9; ++i) {
-                if((pixeloffset2>>(8-i))&1==1) this.setPixelRGB(i >> 0, 0 >> 0);
+            for (let i = 0; i < 9; ++i) {
+                const index=8-i;
+                if((pixeloffset2 >> index)&1==1) this.setPixelRGB(i >> 0, 0);
                 else this.setPixelRGB(i >> 0, rgb >> 0);
             }
             this.show();
