@@ -1,5 +1,5 @@
 {
-    "name": "ColorBit",
+    "name": "neopixel",
     "version": "0.1.0",
     "description": "51bit ColorBit",
     "license": "MIT",
@@ -12,6 +12,7 @@
         "neopixel.ts",
         "_locales/ja/neopixel-strings.json",
         "_locales/de/neopixel-strings.json",
+        "_locales/zh/neopixel-strings.json",
         "_locales/de/neopixel-jsdoc-strings.json"
     ],
     "testFiles": [
