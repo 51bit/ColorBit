@@ -575,7 +575,7 @@ namespace ColorBit {
     }
     
     /**
-     * Create a new NeoPixel driver for `numleds` LEDs.
+     * Init ColorBit.
      * @param pin the pin where the ColorBit is connected.
      */
     //% blockId="ColorBit_create" block="51bit leds at pin %pin| as %mode"
@@ -583,7 +583,7 @@ namespace ColorBit {
     //% parts="ColorBit"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin = DigitalPin.P0, mode: NeoPixelMode): Strip {
+    export function InitColorBit(pin: DigitalPin = DigitalPin.P0, mode: NeoPixelMode): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(25 * stride);
