@@ -386,7 +386,7 @@ namespace ColorBit {
         //% blockId="ColorBit_range" block="%strip|range from %start|with %length|leds"
         //% parts="ColorBit"
         //% blockSetVariable=range
-        range(start: number, length: number): Strip {
+        range(start: number = 0, length: number = 25): Strip {
             start = start >> 0;
             length = length >> 0;
             let strip = new Strip();
@@ -408,6 +408,7 @@ namespace ColorBit {
         //% blockId="ColorBit_shift" block="%strip|shift pixels by %offset" blockGap=8
         //% weight=40
         //% parts="ColorBit"
+        //% advanced=true
         shift(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
@@ -422,6 +423,7 @@ namespace ColorBit {
         //% blockId="ColorBit_rotate" block="%strip|rotate pixels by %offset" blockGap=8
         //% weight=39
         //% parts="ColorBit"
+        //% advanced=true
         rotate(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
@@ -550,7 +552,7 @@ namespace ColorBit {
     //% parts="ColorBit"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 25, mode: NeoPixelMode): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
