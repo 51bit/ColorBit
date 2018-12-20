@@ -130,7 +130,7 @@ namespace ColorBit {
                 pixeloffset2=0x4400;
             }
             for (let i = 0; i < 16; ++i) {
-                const index=15-i;
+                const index=16-i;
                 const a=pixeloffset1 >> index;
                 if((a & 1)==1) 
                     this.setPixelRGB(i >> 0, 0);
