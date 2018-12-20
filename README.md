@@ -1,2 +1,14 @@
-# ColorBit
-ColorBit: 5x5 WS2813B for microbit
+# 51bit ColorBit driver
+Forked from https://github.com/Microsoft/pxt-neopixel
+
+
+
+## Basic usage
+
+## Supported targets
+
+* for PXT/microbit
+
+## License
+
+MIT
