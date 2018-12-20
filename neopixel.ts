@@ -74,7 +74,7 @@ namespace ColorBit {
          */
         //% blockId="51bit_set_led_color" block="%strip|show 51bit number %pixeloffset|with %rgb=ColorBit_colors" 
         //% blockGap=8
-        //% weight=1
+        //% weight=100
         //% parts="ColorBit"
         setIntColor(input:number, rgb: number): void {
             let pixeloffset1=0x0;
@@ -214,7 +214,7 @@ namespace ColorBit {
         //% weight=84
         //% blockId=ColorBit_show_bar_graph block="%strip|show bar graph of %value|up to %high" 
         //% icon="\uf080"
-        //% parts="ColorBit"
+        //% parts="ColorBit" advanced=true
         showBarGraph(value: number, high: number): void {
             if (high <= 0) {
                 this.clear();
@@ -607,6 +607,7 @@ namespace ColorBit {
      * @param l luminosity from 0 to 99
      */
     //% blockId=ColorBitHSL block="hue %h|saturation %s|luminosity %l"
+    //% advanced=true
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
