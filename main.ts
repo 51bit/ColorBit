@@ -66,7 +66,7 @@ namespace colorbit {
             this.setAllRGB(rgb);
             this.show();
         }
-        
+
          /**
          * Show 51 LED number with a given color (range 0-255 for r, g, b). 
          * @param input LED number showing
@@ -77,6 +77,27 @@ namespace colorbit {
         //% weight=100
         //% parts="colorbit"
         setIntColor(input:number, rgb: number): void {
+            let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
+            let indexl=0;
+            if(input==0)
+            {
+                showFont(0, rgb);
+                return;
+            }
+            while(input)
+            {
+                a[indexl++] = input%10;
+                input/=10;
+            }
+            
+            //反序输出每一位值。
+            while(--indexl>=0) 
+            {
+                let y=a[indexl];
+                if((y>=0) && (y<=9))showFont(y, rgb);
+            }
+        }
+        showFont (input:number, rgb: number): void {
             let pixeloffset1=0x0;
             let pixeloffset2=0x0;
             if(input==0) 
