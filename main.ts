@@ -1033,6 +1033,7 @@ namespace colorbit {
         strip.setBrightness(30);
         strip.setPin(pin);
         strip.issequencecolor=false;
+		strip.lastcolor=BitColors.Red;
         return strip;
     }
     
@@ -1056,6 +1057,7 @@ namespace colorbit {
         strip.setBrightness(30);
         strip.setPin(pin);
         strip.issequencecolor=false;
+		strip.lastcolor=BitColors.Red;
         return strip;
     }
 
