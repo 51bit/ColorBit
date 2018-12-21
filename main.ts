@@ -515,6 +515,8 @@ namespace colorbit {
                 const a=pixeloffset1 >> index;
                 if((a & 1)==0) 
                     this.setPixelRGB(i >> 0, 0);
+                else if(this.isautocolor)
+                    this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
                 else 
                     this.setPixelRGB(i >> 0, rgb >> 0);
             }
@@ -523,6 +525,8 @@ namespace colorbit {
                 const a=pixeloffset2 >> index;
                 if((a & 1)==0)
                     this.setPixelRGB(i >> 0, 0);
+                else if(this.isautocolor)
+                    this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
                 else 
                     this.setPixelRGB(i >> 0, rgb >> 0);
             }
