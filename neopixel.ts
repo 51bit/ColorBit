@@ -318,7 +318,7 @@ namespace ColorBit {
          * Send all the changes to the strip.
          */
         //% blockId="ColorBit_show" block="%strip|show" blockGap=8
-        //% weight=79
+        //% weight=79 advanced=true
         //% parts="ColorBit"
         show() {
             ws2812b.sendBuffer(this.buf, this.pin);
@@ -334,6 +334,7 @@ namespace ColorBit {
         clear(): void {
             const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
+			this.show();
         }
 
         /**
