@@ -53,8 +53,8 @@ namespace colorbit {
         _length: number; // number of LEDs
         _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
-        isautocolor: boolean;
-		randomNum: number;
+        issequencecolor: boolean;
+		lastcolor: number;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
@@ -69,15 +69,37 @@ namespace colorbit {
             this.show();
         }
         
+		nextNum(): number {
+			if(this.lastcolor==BitColors.Red)
+				this.lastcolor=BitColors.Orange;
+			else if(this.lastcolor==BitColors.Orange)
+				this.lastcolor=BitColors.Yellow;
+			else if(this.lastcolor==BitColors.Yellow)
+				this.lastcolor=BitColors.Green;
+			else if(this.lastcolor==BitColors.Green)
+				this.lastcolor=BitColors.Blue;
+			else if(this.lastcolor==BitColors.Blue)
+				this.lastcolor=BitColors.Indigo;
+			else if(this.lastcolor==BitColors.Indigo)
+				this.lastcolor=BitColors.Violet;
+			else if(this.lastcolor==BitColors.Violet)
+				this.lastcolor=BitColors.Purple;
+			else if(this.lastcolor==BitColors.Purple)
+				this.lastcolor=BitColors.White;
+			else if(this.lastcolor==BitColors.White)
+				this.lastcolor=BitColors.Red;
+			return this.lastcolor;
+		}
+		
         /**
          * Set auto color. 
-         * @param yes is auto color?
+         * @param yes is sequence color?
          */
-        //% blockId="colorbit_set_auto_color" block="%51bit|Set auto color: %yes" 
+        //% blockId="colorbit_set_sequence_color" block="%51bit|Set sequence color: %yes" 
         //% weight=12 blockGap=8
         //% parts="colorbit"
-        setAutoColor(yes: boolean) {
-            this.isautocolor=yes;
+        setSequenceColor(yes: boolean) {
+            this.issequencecolor=yes;
         }
 
         /**
@@ -95,24 +117,22 @@ namespace colorbit {
                 let pixeloffset1=0x23be;
                 let pixeloffset2=0x4200;
 				for (let i = 0; i < 16; ++i) {
-				    this.randomNum=(this.randomNum+7)%254+1;
                     const index=15-i;
                     const a=pixeloffset1 >> index;
                     if((a & 1)==0) 
                         this.setPixelRGB(i >> 0, 0);
-                    else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                    else if(this.issequencecolor)
+                        this.setPixelRGB(i >> 0, this.nextNum() >> 0);
                     else
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
                 for (let i = 16; i < 25; ++i) {
-				    this.randomNum=(this.randomNum+25)%254+1;
                     const index=31-i;
                     const a=pixeloffset2 >> index;
                     if((a & 1)==0)
                         this.setPixelRGB(i >> 0, 0);
-                    else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                    else if(this.issequencecolor)
+                        this.setPixelRGB(i >> 0, this.nextNum() >> 0);
                     else 
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
@@ -440,10 +460,9 @@ namespace colorbit {
 					{
                         this.setPixelRGB(i >> 0, 0);
 					}
-                    else if(this.isautocolor)
+                    else if(this.issequencecolor)
 					{
-						this.randomNum=(this.randomNum+59)%254+1;
-                        this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                        this.setPixelRGB(i >> 0, this.nextNum() >> 0);
 					}
                     else
 					{
@@ -457,10 +476,9 @@ namespace colorbit {
 					{
                         this.setPixelRGB(i >> 0, 0);
 					}
-                    else if(this.isautocolor)
+                    else if(this.issequencecolor)
 					{
-					    this.randomNum=(this.randomNum+99)%254+1;
-                        this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                        this.setPixelRGB(i >> 0, this.nextNum() >> 0);
 					}
                     else
 					{
@@ -561,10 +579,9 @@ namespace colorbit {
                 if((a & 1)==0){
                     this.setPixelRGB(i >> 0, 0);
 				}
-                else if(this.isautocolor)
+                else if(this.issequencecolor)
 				{
-				    this.randomNum=(this.randomNum+123)%254+1;
-                    this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                    this.setPixelRGB(i >> 0, this.nextNum() >> 0);
 				}
                 else
 				{
@@ -577,10 +594,9 @@ namespace colorbit {
                 if((a & 1)==0){
                     this.setPixelRGB(i >> 0, 0);
 				}
-                else if(this.isautocolor)
+                else if(this.issequencecolor)
 				{
-				    this.randomNum=(this.randomNum+211)%254+1;
-                    this.setPixelRGB(i >> 0, this.randomNum >> 0);
+                    this.setPixelRGB(i >> 0, this.nextNum() >> 0);
 				}
                 else 
 				{
@@ -849,7 +865,7 @@ namespace colorbit {
             strip._length = Math.clamp(0, this._length - (strip.start - this.start), length);
             strip._matrixWidth = 0;
             strip._mode = this._mode;
-            strip.isautocolor=this.isautocolor;
+            strip.issequencecolor=this.issequencecolor;
             return strip;
         }
 
@@ -1016,7 +1032,7 @@ namespace colorbit {
         strip._matrixWidth = 0;
         strip.setBrightness(30);
         strip.setPin(pin);
-        strip.isautocolor=false;
+        strip.issequencecolor=false;
 		strip.randomNum=0;
         return strip;
     }
@@ -1040,7 +1056,7 @@ namespace colorbit {
         strip._matrixWidth = 0;
         strip.setBrightness(30);
         strip.setPin(pin);
-        strip.isautocolor=false;
+        strip.issequencecolor=false;
 		strip.randomNum=0;
         return strip;
     }
