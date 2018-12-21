@@ -1,0 +1,27 @@
+let _51bit: colorbit.Strip = null
+input.onButtonPressed(Button.A, function () {
+    _51bit.setStringColor("51bitTree", colorbit.colors(BitColors.Green))
+})
+input.onButtonPressed(Button.B, function () {
+    while (true) {
+        _51bit.setPixelColor(2, colorbit.colors(BitColors.Red))
+        _51bit.setPixelColor(10, colorbit.colors(BitColors.Orange))
+        _51bit.setPixelColor(14, colorbit.colors(BitColors.Yellow))
+        _51bit.show()
+        basic.pause(1000)
+        basic.pause(1000)
+        _51bit.setPixelColor(2, colorbit.colors(BitColors.Blue))
+        _51bit.setPixelColor(10, colorbit.colors(BitColors.Purple))
+        _51bit.setPixelColor(14, colorbit.colors(BitColors.Violet))
+        _51bit.show()
+        basic.pause(1000)
+        basic.pause(1000)
+    }
+})
+input.onButtonPressed(Button.AB, function () {
+    _51bit.setSequenceColor(true)
+})
+_51bit = colorbit.initColorBit(DigitalPin.P0, BitColorMode.RGB)
+basic.forever(function () {
+	
+})
