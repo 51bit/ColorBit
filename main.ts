@@ -83,133 +83,133 @@ namespace colorbit {
                 let pixeloffset2=0x0;
                 if(ch=="A") 
                 {
-                    pixeloffset1=0x64a5;
-                    pixeloffset2=0x2600;
+                    pixeloffset1=0x64bd;
+                    pixeloffset2=0x2900;
                 }
                 else if(ch=="B")
                 {
-                    pixeloffset1=0x2308;
-                    pixeloffset2=0x4700;
+                    pixeloffset1=0xe4b9;
+                    pixeloffset2=0x2e00;
                 }
                 else if(ch=="C")
                 {
-                    pixeloffset1=0xe099;
-                    pixeloffset2=0xf00;
+                    pixeloffset1=0x7421;
+                    pixeloffset2=0x700;
                 }
                 else if(ch=="D")
                 {
-                    pixeloffset1=0xf089;
-                    pixeloffset2=0x2600;
+                    pixeloffset1=0xe4a5;
+                    pixeloffset2=0x2e00;
                 }
                 else if(ch=="E")
                 {
-                    pixeloffset1=0x32a5;
-                    pixeloffset2=0xf100;
+                    pixeloffset1=0xf439;
+                    pixeloffset2=0xf00;
                 }
                 else if(ch=="F")
                 {
-                    pixeloffset1=0xfc3c;
-                    pixeloffset2=0x1f00;
+                    pixeloffset1=0xf439;
+                    pixeloffset2=0x800;
                 }
                 else if(ch=="G")
                 {
-                    pixeloffset1=0x111d;
+                    pixeloffset1=0x7427;
                     pixeloffset2=0x1700;
                 }
                 else if(ch=="H")
                 {
-                    pixeloffset1=0xf888;
-                    pixeloffset2=0x8800;
+                    pixeloffset1=0x94bd;
+                    pixeloffset2=0x2900;
                 }
                 else if(ch=="I")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0xe210;
+                    pixeloffset2=0x8e00;
                 }
                 else if(ch=="J")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0xf885;
+                    pixeloffset2=0x2600;
                 }
                 else if(ch=="K")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x9531;
+                    pixeloffset2=0x4900;
                 }
                 else if(ch=="L")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0x8421;
+                    pixeloffset2=0xf00;
                 }
                 else if(ch=="M")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x8eeb;
+                    pixeloffset2=0x1880;
                 }
                 else if(ch=="N")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0x8e6b;
+                    pixeloffset2=0x3880;
                 }
                 else if(ch=="O")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x64a5;
+                    pixeloffset2=0x2600;
                 }
                 else if(ch=="P")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0xe4b9;
+                    pixeloffset2=0x800;
                 }
                 else if(ch=="Q")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x64a4;
+                    pixeloffset2=0xc300;
                 }
                 else if(ch=="R")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0xe4b9;
+                    pixeloffset2=0x2880;
                 }
                 else if(ch=="S")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x7418;
+                    pixeloffset2=0x2e00;
                 }
                 else if(ch=="T")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0xf908;
+                    pixeloffset2=0x4200;
                 }
                 else if(ch=="U")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x94a5;
+                    pixeloffset2=0x2600;
                 }
                 else if(ch=="V")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0x8c62;
+                    pixeloffset2=0xa200;
                 }
                 else if(ch=="W")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x8c6b;
+                    pixeloffset2=0xb880;
                 }
                 else if(ch=="X")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0x9499;
+                    pixeloffset2=0x2900;
                 }
                 else if(ch=="Y")
                 {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
+                    pixeloffset1=0x8a88;
+                    pixeloffset2=0x4200;
                 }
                 else if(ch=="Z")
                 {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
+                    pixeloffset1=0xf111;
+                    pixeloffset2=0xf00;
                 }
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
