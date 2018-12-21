@@ -211,6 +211,186 @@ namespace colorbit {
                     pixeloffset1=0xf111;
                     pixeloffset2=0xf00;
                 }
+                else if(ch=="0") 
+                {
+                    pixeloffset1=0x64a5;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="1")
+                {
+                    pixeloffset1=0x2308;
+                    pixeloffset2=0x4700;
+                }
+                else if(ch=="2")
+                {
+                    pixeloffset1=0xe099;
+                    pixeloffset2=0xf00;
+                }
+                else if(ch=="3")
+                {
+                    pixeloffset1=0xf089;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="4")
+                {
+                    pixeloffset1=0x32a5;
+                    pixeloffset2=0xf100;
+                }
+                else if(ch=="5")
+                {
+                    pixeloffset1=0xfc3c;
+                    pixeloffset2=0x1f00;
+                }
+                else if(ch=="6")
+                {
+                    pixeloffset1=0x111d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="7")
+                {
+                    pixeloffset1=0xf888;
+                    pixeloffset2=0x8800;
+                }
+                else if(ch=="8")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="9")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="a") 
+                {
+                    pixeloffset1=0x3a5;
+                    pixeloffset2=0x2780;
+                }
+                else if(ch=="b")
+                {
+                    pixeloffset1=0x8439;
+                    pixeloffset2=0x2e00;
+                }
+                else if(ch=="c")
+                {
+                    pixeloffset1=0x3a1;
+                    pixeloffset2=0x700;
+                }
+                else if(ch=="d")
+                {
+                    pixeloffset1=0x109d;
+                    pixeloffset2=0x2700;
+                }
+                else if(ch=="e")
+                {
+                    pixeloffset1=0x64b9;
+                    pixeloffset2=0x700;
+                }
+                else if(ch=="f")
+                {
+                    pixeloffset1=0x3238;
+                    pixeloffset2=0x8400;
+                }
+                else if(ch=="g")
+                {
+                    pixeloffset1=0x749c;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="h")
+                {
+                    pixeloffset1=0x8439;
+                    pixeloffset2=0x2900;
+                }
+                else if(ch=="i")
+                {
+                    pixeloffset1=0x4010;
+                    pixeloffset2=0x8400;
+                }
+                else if(ch=="j")
+                {
+                    pixeloffset1=0x1004;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="k")
+                {
+                    pixeloffset1=0x8531;
+                    pixeloffset2=0x4900;
+                }
+                else if(ch=="l")
+                {
+                    pixeloffset1=0x4210;
+                    pixeloffset2=0x8300;
+                }
+                else if(ch=="m")
+                {
+                    pixeloffset1=0x6eb;
+                    pixeloffset2=0x1880;
+                }
+                else if(ch=="n")
+                {
+                    pixeloffset1=0x725;
+                    pixeloffset2=0x2900;
+                }
+                else if(ch=="o")
+                {
+                    pixeloffset1=0x325;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="p")
+                {
+                    pixeloffset1=0x725;
+                    pixeloffset2=0xc800;
+                }
+                else if(ch=="q")
+                {
+                    pixeloffset1=0x3a4;
+                    pixeloffset2=0xe100;
+                }
+                else if(ch=="r")
+                {
+                    pixeloffset1=0x5b1;
+                    pixeloffset2=0x800;
+                }
+                else if(ch=="s")
+                {
+                    pixeloffset1=0x190;
+                    pixeloffset2=0x4c00;
+                }
+                else if(ch=="t")
+                {
+                    pixeloffset1=0x423c;
+                    pixeloffset2=0x8380;
+                }
+                else if(ch=="u")
+                {
+                    pixeloffset1=0x4a5;
+                    pixeloffset2=0x2780;
+                }
+                else if(ch=="v")
+                {
+                    pixeloffset1=0x462;
+                    pixeloffset2=0xa200;
+                }
+                else if(ch=="w")
+                {
+                    pixeloffset1=0x463;
+                    pixeloffset2=0x5d80;
+                }
+                else if(ch=="x")
+                {
+                    pixeloffset1=0x498;
+                    pixeloffset2=0xc900;
+                }
+                else if(ch=="y")
+                {
+                    pixeloffset1=0x454;
+                    pixeloffset2=0x4c00;
+                }
+                else if(ch=="z")
+                {
+                    pixeloffset1=0x788;
+                    pixeloffset2=0x8f00;
+                }
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
