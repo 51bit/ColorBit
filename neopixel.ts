@@ -72,7 +72,7 @@ namespace ColorBit {
          * @param input LED number showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_led_color" block="%51bit|show 51bit number %pixeloffset|with %rgb=ColorBit_colors" 
+        //% blockId="51bit_set_led_color" block="%51bit|show 51bit number %input|with %rgb=ColorBit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="ColorBit"
