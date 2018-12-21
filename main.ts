@@ -53,7 +53,7 @@ namespace colorbit {
         _length: number; // number of LEDs
         _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
-        isautocolor: Boolean;
+        isautocolor: boolean;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
@@ -787,6 +787,7 @@ namespace colorbit {
             strip._length = Math.clamp(0, this._length - (strip.start - this.start), length);
             strip._matrixWidth = 0;
             strip._mode = this._mode;
+            strip.isautocolor=this.isautocolor;
             return strip;
         }
 
@@ -951,8 +952,9 @@ namespace colorbit {
         strip._length = numleds;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(50)
-        strip.setPin(pin)
+        strip.setBrightness(50);
+        strip.setPin(pin);
+        strip.isautocolor=false;
         return strip;
     }
     
@@ -973,9 +975,9 @@ namespace colorbit {
         strip._length = 25;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(50)
-        strip.setPin(pin)
-        strip.isautocolor=false
+        strip.setBrightness(50);
+        strip.setPin(pin);
+        strip.isautocolor=false;
         return strip;
     }
 
