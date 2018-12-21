@@ -54,6 +54,7 @@ namespace colorbit {
         _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
         isautocolor: boolean;
+		randomNum: number;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
@@ -94,22 +95,24 @@ namespace colorbit {
                 let pixeloffset1=0x23be;
                 let pixeloffset2=0x4200;
 				for (let i = 0; i < 16; ++i) {
+				    randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
                     const index=15-i;
                     const a=pixeloffset1 >> index;
                     if((a & 1)==0) 
                         this.setPixelRGB(i >> 0, 0);
                     else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
+                        this.setPixelRGB(i >> 0, randomNum >> 0);
                     else
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
                 for (let i = 16; i < 25; ++i) {
+				    randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
                     const index=31-i;
                     const a=pixeloffset2 >> index;
                     if((a & 1)==0)
                         this.setPixelRGB(i >> 0, 0);
                     else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
+                        this.setPixelRGB(i >> 0, randomNum >> 0);
                     else 
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
@@ -433,22 +436,36 @@ namespace colorbit {
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
-                    if((a & 1)==0) 
+                    if((a & 1)==0)
+					{
                         this.setPixelRGB(i >> 0, 0);
+					}
                     else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
+					{
+						randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
+                        this.setPixelRGB(i >> 0, randomNum >> 0);
+					}
                     else
+					{
                         this.setPixelRGB(i >> 0, rgb >> 0);
+					}
                 }
                 for (let i = 16; i < 25; ++i) {
                     const index=31-i;
                     const a=pixeloffset2 >> index;
                     if((a & 1)==0)
+					{
                         this.setPixelRGB(i >> 0, 0);
+					}
                     else if(this.isautocolor)
-                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
-                    else 
+					{
+					    randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
+                        this.setPixelRGB(i >> 0, randomNum >> 0);
+					}
+                    else
+					{
                         this.setPixelRGB(i >> 0, rgb >> 0);
+					}
                 }
                 this.show();
 				basic.pause(500);
@@ -541,22 +558,34 @@ namespace colorbit {
             for (let i = 0; i < 16; ++i) {
                 const index=15-i;
                 const a=pixeloffset1 >> index;
-                if((a & 1)==0) 
+                if((a & 1)==0){
                     this.setPixelRGB(i >> 0, 0);
+				}
                 else if(this.isautocolor)
-                    this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
-                else 
+				{
+				    randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
+                    this.setPixelRGB(i >> 0, randomNum >> 0);
+				}
+                else
+				{
                     this.setPixelRGB(i >> 0, rgb >> 0);
+				}
             }
             for (let i = 16; i < 25; ++i) {
                 const index=31-i;
                 const a=pixeloffset2 >> index;
-                if((a & 1)==0)
+                if((a & 1)==0){
                     this.setPixelRGB(i >> 0, 0);
+				}
                 else if(this.isautocolor)
-                    this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
+				{
+				    randomNum=(randomNum+Math.randomRange(1, 255))%254+1;
+                    this.setPixelRGB(i >> 0, randomNum >> 0);
+				}
                 else 
+				{
                     this.setPixelRGB(i >> 0, rgb >> 0);
+				}
             }
             this.show();
 			basic.pause(200);
@@ -985,7 +1014,7 @@ namespace colorbit {
         strip._length = numleds;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(50);
+        strip.setBrightness(30);
         strip.setPin(pin);
         strip.isautocolor=false;
         return strip;
@@ -1008,7 +1037,7 @@ namespace colorbit {
         strip._length = 25;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(50);
+        strip.setBrightness(30);
         strip.setPin(pin);
         strip.isautocolor=false;
         return strip;
