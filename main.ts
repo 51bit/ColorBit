@@ -440,6 +440,11 @@ namespace colorbit {
         setIntColor(input:number, rgb: number): void {
             let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
             let indexl=0;
+			if(input==-1)
+            {
+                this.showFont(-1, rgb);
+                return;
+            }
             if(input==0)
             {
                 this.showFont(0, rgb);
@@ -510,6 +515,11 @@ namespace colorbit {
             {
                 pixeloffset1=0x745c;
                 pixeloffset2=0x4400;
+            }
+		    else if(input==-1)
+            {
+                pixeloffset1=0x23be;
+                pixeloffset2=0x4200;
             }
             for (let i = 0; i < 16; ++i) {
                 const index=15-i;
