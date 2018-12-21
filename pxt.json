@@ -10,10 +10,7 @@
     "files": [
         "README.md",
         "neopixel.ts",
-        "_locales/ja/colorbit-strings.json",
-        "_locales/de/colorbit-strings.json",
-        "_locales/zh/colorbit-strings.json",
-        "_locales/de/colorbit-jsdoc-strings.json"
+        "_locales/zh/colorbit-strings.json"
     ],
     "yotta": {
         "config": {
