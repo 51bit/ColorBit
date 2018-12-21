@@ -1,7 +1,7 @@
 /**
  * Well known colors for a NeoPixel strip
  */
-enum NeoPixelColors {
+enum BitColors {
     //% block=red
     Red = 0xFF0000,
     //% block=orange
@@ -27,7 +27,7 @@ enum NeoPixelColors {
 /**
  * Different modes for RGB or RGB+W NeoPixel strips
  */
-enum NeoPixelMode {
+enum BitColorMode {
     //% block="RGB (GRB format)"
     RGB = 0,
     //% block="RGB+W"
@@ -51,7 +51,7 @@ namespace ColorBit {
         brightness: number;
         start: number; // start offset in LED strip
         _length: number; // number of LEDs
-        _mode: NeoPixelMode;
+        _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
 
         /**
@@ -227,7 +227,7 @@ namespace ColorBit {
         showBarGraph(value: number, high: number): void {
             if (high <= 0) {
                 this.clear();
-                this.setPixelColor(0, NeoPixelColors.Yellow);
+                this.setPixelColor(0, BitColors.Yellow);
                 this.show();
                 return;
             }
@@ -309,7 +309,7 @@ namespace ColorBit {
         //% weight=80
         //% parts="ColorBit" advanced=true
         setPixelWhiteLED(pixeloffset: number, white: number): void {            
-            if (this._mode === NeoPixelMode.RGBW) {
+            if (this._mode === BitColorMode.RGBW) {
                 this.setPixelW(pixeloffset >> 0, white >> 0);
             }
         }
@@ -332,7 +332,7 @@ namespace ColorBit {
         //% weight=76
         //% parts="ColorBit"
         clear(): void {
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
         }
 
@@ -363,7 +363,7 @@ namespace ColorBit {
         //% weight=58
         //% parts="ColorBit" advanced=true
         easeBrightness(): void {
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             const br = this.brightness;
             const buf = this.buf;
             const end = this.start + this._length;
@@ -419,7 +419,7 @@ namespace ColorBit {
         //% advanced=true
         shift(offset: number = 1): void {
             offset = offset >> 0;
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             this.buf.shift(-offset * stride, this.start * stride, this._length * stride)
         }
 
@@ -434,7 +434,7 @@ namespace ColorBit {
         //% advanced=true
         rotate(offset: number = 1): void {
             offset = offset >> 0;
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             this.buf.rotate(-offset * stride, this.start * stride, this._length * stride)
         }
 
@@ -455,7 +455,7 @@ namespace ColorBit {
         //% weight=9 blockId=ColorBit_power block="%strip|power (mA)"
         //% advanced=true
         power(): number {
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             const end = this.start + this._length;
             let p = 0;
             for (let i = this.start; i < end; ++i) {
@@ -469,7 +469,7 @@ namespace ColorBit {
         }
 
         private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
-            if (this._mode === NeoPixelMode.RGB_RGB) {
+            if (this._mode === BitColorMode.RGB_RGB) {
                 this.buf[offset + 0] = red;
                 this.buf[offset + 1] = green;
             } else {
@@ -491,13 +491,13 @@ namespace ColorBit {
                 blue = (blue * br) >> 8;
             }
             const end = this.start + this._length;
-            const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             for (let i = this.start; i < end; ++i) {
                 this.setBufferRGB(i * stride, red, green, blue)
             }
         }
         private setAllW(white: number) {
-            if (this._mode !== NeoPixelMode.RGBW)
+            if (this._mode !== BitColorMode.RGBW)
                 return;
 
             let br = this.brightness;
@@ -516,7 +516,7 @@ namespace ColorBit {
                 || pixeloffset >= this._length)
                 return;
 
-            let stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
+            let stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             pixeloffset = (pixeloffset + this.start) * stride;
 
             let red = unpackR(rgb);
@@ -532,7 +532,7 @@ namespace ColorBit {
             this.setBufferRGB(pixeloffset, red, green, blue)
         }
         private setPixelW(pixeloffset: number, white: number): void {
-            if (this._mode !== NeoPixelMode.RGBW)
+            if (this._mode !== BitColorMode.RGBW)
                 return;
 
             if (pixeloffset < 0
@@ -559,11 +559,11 @@ namespace ColorBit {
     //% weight=90 blockGap=8
     //% parts="ColorBit"
     //% trackArgs=0,2
-    //% blockSetVariable=strip
+    //% blockSetVariable=51bit
     //% advanced=true
-    export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 25, mode: NeoPixelMode): Strip {
+    export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 25, mode: BitColorMode): Strip {
         let strip = new Strip();
-        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
+        let stride = mode === BitColorMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
         strip.start = 0;
         strip._length = numleds;
@@ -582,10 +582,10 @@ namespace ColorBit {
     //% weight=90 blockGap=8
     //% parts="ColorBit"
     //% trackArgs=0,2
-    //% blockSetVariable=strip
-    export function InitColorBit(pin: DigitalPin = DigitalPin.P0, mode: NeoPixelMode): Strip {
+    //% blockSetVariable=51bit
+    export function InitColorBit(pin: DigitalPin = DigitalPin.P0, mode: BitColorMode): Strip {
         let strip = new Strip();
-        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
+        let stride = mode === BitColorMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(25 * stride);
         strip.start = 0;
         strip._length = 25;
@@ -615,7 +615,7 @@ namespace ColorBit {
     //% weight=2 blockGap=8
     //% blockId="ColorBit_colors" block="%color"
     //% advanced=true
-    export function colors(color: NeoPixelColors): number {
+    export function colors(color: BitColors): number {
         return color;
     }
 
