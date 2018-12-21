@@ -53,6 +53,7 @@ namespace colorbit {
         _length: number; // number of LEDs
         _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
+        isautocolor: Boolean;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
@@ -65,6 +66,17 @@ namespace colorbit {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
             this.show();
+        }
+        
+        /**
+         * Set auto color. 
+         * @param yes is auto color?
+         */
+        //% blockId="colorbit_set_auto_color" block="%51bit|Set auto color: %yes" 
+        //% weight=12 blockGap=8
+        //% parts="colorbit"
+        setAutoColor(yes: Boolean) {
+            this.isautocolor=yes;
         }
 
         /**
@@ -396,7 +408,9 @@ namespace colorbit {
                     const a=pixeloffset1 >> index;
                     if((a & 1)==0) 
                         this.setPixelRGB(i >> 0, 0);
-                    else 
+                    else if(this.isautocolor)
+                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
+                    else
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
                 for (let i = 16; i < 25; ++i) {
@@ -404,6 +418,8 @@ namespace colorbit {
                     const a=pixeloffset2 >> index;
                     if((a & 1)==0)
                         this.setPixelRGB(i >> 0, 0);
+                    else if(this.isautocolor)
+                        this.setPixelRGB(i >> 0, Math.randomRange(1, 255) >> 0);
                     else 
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
@@ -959,6 +975,7 @@ namespace colorbit {
         strip._matrixWidth = 0;
         strip.setBrightness(50)
         strip.setPin(pin)
+        strip.isautocolor=false
         return strip;
     }
 
