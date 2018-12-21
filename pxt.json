@@ -12,14 +12,5 @@
         "main.ts",
         "_locales/zh/colorbit-strings.json"
     ],
-    "yotta": {
-        "config": {
-            "microbit-dal": {
-                "bluetooth": {
-                    "enabled": 0
-                }
-            }
-        }
-    },
     "public": true
 }
