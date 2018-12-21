@@ -9,7 +9,7 @@
     },
     "files": [
         "README.md",
-        "neopixel.ts",
+        "main.ts",
         "_locales/zh/colorbit-strings.json"
     ],
     "yotta": {
