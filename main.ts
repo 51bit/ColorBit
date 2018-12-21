@@ -67,12 +67,176 @@ namespace colorbit {
             this.show();
         }
 
+        /**
+         * Show 51 LED string with a given color (range 0-255 for r, g, b). 
+         * @param input LED string showing
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="51bit_set_string_color" block="%51bit|show 51bit string %input|with %rgb=colorbit_colors" 
+        //% blockGap=8
+        //% weight=100
+        //% parts="colorbit"
+        setStringColor(input: string, rgb: number): void {
+            for (let index = 0; index < input.length; index++) {
+                let ch: string = input.charAt(index);
+                let pixeloffset1=0x0;
+                let pixeloffset2=0x0;
+                if(ch=="A") 
+                {
+                    pixeloffset1=0x64a5;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="B")
+                {
+                    pixeloffset1=0x2308;
+                    pixeloffset2=0x4700;
+                }
+                else if(ch=="C")
+                {
+                    pixeloffset1=0xe099;
+                    pixeloffset2=0xf00;
+                }
+                else if(ch=="D")
+                {
+                    pixeloffset1=0xf089;
+                    pixeloffset2=0x2600;
+                }
+                else if(ch=="E")
+                {
+                    pixeloffset1=0x32a5;
+                    pixeloffset2=0xf100;
+                }
+                else if(ch=="F")
+                {
+                    pixeloffset1=0xfc3c;
+                    pixeloffset2=0x1f00;
+                }
+                else if(ch=="G")
+                {
+                    pixeloffset1=0x111d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="H")
+                {
+                    pixeloffset1=0xf888;
+                    pixeloffset2=0x8800;
+                }
+                else if(ch=="I")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="J")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="K")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="L")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="M")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="N")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="O")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="P")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="Q")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="R")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="S")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="T")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="U")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="V")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="W")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="X")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                else if(ch=="Y")
+                {
+                    pixeloffset1=0x745d;
+                    pixeloffset2=0x1700;
+                }
+                else if(ch=="Z")
+                {
+                    pixeloffset1=0x745c;
+                    pixeloffset2=0x4400;
+                }
+                for (let i = 0; i < 16; ++i) {
+                    const index=15-i;
+                    const a=pixeloffset1 >> index;
+                    if((a & 1)==0) 
+                        this.setPixelRGB(i >> 0, 0);
+                    else 
+                        this.setPixelRGB(i >> 0, rgb >> 0);
+                }
+                for (let i = 16; i < 25; ++i) {
+                    const index=31-i;
+                    const a=pixeloffset2 >> index;
+                    if((a & 1)==0)
+                        this.setPixelRGB(i >> 0, 0);
+                    else 
+                        this.setPixelRGB(i >> 0, rgb >> 0);
+                }
+                this.show();
+            }
+        }
+        
          /**
          * Show 51 LED number with a given color (range 0-255 for r, g, b). 
          * @param input LED number showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_led_color" block="%51bit|show 51bit number %input|with %rgb=colorbit_colors" 
+        //% blockId="51bit_set_int_color" block="%51bit|show 51bit number %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
