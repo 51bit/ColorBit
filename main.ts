@@ -424,6 +424,7 @@ namespace colorbit {
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
                 this.show();
+				basic.pause(100);
             }
         }
         
@@ -531,6 +532,7 @@ namespace colorbit {
                     this.setPixelRGB(i >> 0, rgb >> 0);
             }
             this.show();
+			basic.pause(200);
         }
 
         /**
