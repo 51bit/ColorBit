@@ -245,7 +245,7 @@ namespace colorbit {
             let indexl=0;
             if(input==0)
             {
-                showFont(0, rgb);
+                this.showFont(0, rgb);
                 return;
             }
             while(input)
@@ -258,7 +258,7 @@ namespace colorbit {
             while(--indexl>=0) 
             {
                 let y=a[indexl];
-                if((y>=0) && (y<=9))showFont(y, rgb);
+                if((y>=0) && (y<=9)) this.showFont(y, rgb);
             }
         }
         showFont (input:number, rgb: number): void {
