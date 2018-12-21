@@ -75,7 +75,7 @@ namespace colorbit {
         //% blockId="colorbit_set_auto_color" block="%51bit|Set auto color: %yes" 
         //% weight=12 blockGap=8
         //% parts="colorbit"
-        setAutoColor(yes: Boolean) {
+        setAutoColor(yes: boolean) {
             this.isautocolor=yes;
         }
 
