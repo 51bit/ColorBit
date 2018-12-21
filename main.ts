@@ -1033,7 +1033,6 @@ namespace colorbit {
         strip.setBrightness(30);
         strip.setPin(pin);
         strip.issequencecolor=false;
-		strip.randomNum=0;
         return strip;
     }
     
@@ -1057,7 +1056,6 @@ namespace colorbit {
         strip.setBrightness(30);
         strip.setPin(pin);
         strip.issequencecolor=false;
-		strip.randomNum=0;
         return strip;
     }
 
