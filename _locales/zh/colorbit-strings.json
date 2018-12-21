@@ -17,7 +17,7 @@
   "colorbit.Strip.showBarGraph|block": "%51bit|显示柱状图 值%value|最大值%high",
   "colorbit.Strip.setPixelColor|block": "%51bit|设置颜色 像素%pixeloffset|为 %rgb=colorbit_colors",
   "colorbit.Strip.setIntColor|block": "%51bit|显示 51bit 数字： %input|且颜色为 %rgb=colorbit_colors",
-  "colorbit.Strip.InitColorBit|block": "51bit leds 在引脚： %pin| 且模式为 %mode",
+  "colorbit.Strip.initColorBit|block": "51bit leds 在引脚： %pin| 且模式为 %mode",
   "colorbit.Strip.setPixelWhiteLED|block": "%51bit|设置白灯(RGB+W) 像素%pixeloffset|为 %white",
   "colorbit.Strip.show|block": "%51bit|刷新显示",
   "colorbit.Strip.clear|block": "%51bit|清除显示",

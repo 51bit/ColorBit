@@ -584,7 +584,7 @@ namespace colorbit {
     //% parts="colorbit"
     //% trackArgs=0,2
     //% blockSetVariable=51bit
-    export function InitColorBit(pin: DigitalPin = DigitalPin.P0, mode: BitColorMode): Strip {
+    export function initColorBit(pin: DigitalPin = DigitalPin.P0, mode: BitColorMode): Strip {
         let strip = new Strip();
         let stride = mode === BitColorMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(25 * stride);
