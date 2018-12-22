@@ -507,10 +507,11 @@ namespace colorbit {
                 this.showFont(0, rgb);
                 return;
             }
-            while(input)
+            while(input>=1)
             {
                 a[indexl++] = input%10;
                 input/=10;
+		basic.showNumber(input)
             }
             
             //反序输出每一位值。
