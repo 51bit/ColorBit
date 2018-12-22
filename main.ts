@@ -500,7 +500,7 @@ namespace colorbit {
         //% weight=100
         //% parts="colorbit"
         setIntColor(input: number, rgb: number): void {
-            let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
+            let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
             let indexl=0;
             if(input==0)
             {
@@ -510,14 +510,13 @@ namespace colorbit {
             while(input>=1)
             {
                 a[indexl++] = input%10;
-                input/=10;
+                input=Math.trunc(input/10);
             }
             
             //反序输出每一位值。
             while(--indexl>=0) 
             {
                 let y=a[indexl];
-		basic.showNumber(y);
                 if((y>=0) && (y<=9)) this.showFont(y, rgb);
             }
         }
