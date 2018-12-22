@@ -511,13 +511,13 @@ namespace colorbit {
             {
                 a[indexl++] = input%10;
                 input/=10;
-		basic.showNumber(input)
             }
             
             //反序输出每一位值。
             while(--indexl>=0) 
             {
                 let y=a[indexl];
+		basic.showNumber(y);
                 if((y>=0) && (y<=9)) this.showFont(y, rgb);
             }
         }
