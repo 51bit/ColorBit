@@ -486,7 +486,7 @@ namespace colorbit {
 					}
                 }
                 this.show();
-				basic.pause(500);
+				basic.pause(1000);
             }
         }
         
@@ -499,7 +499,7 @@ namespace colorbit {
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
-        setIntColor(input:number, rgb: number): void {
+        setIntColor(input: number, rgb: number): void {
             let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
             let indexl=0;
             if(input==0)
@@ -520,7 +520,7 @@ namespace colorbit {
                 if((y>=0) && (y<=9)) this.showFont(y, rgb);
             }
         }
-        showFont (input:number, rgb: number): void {
+        showFont (input: number, rgb: number): void {
             let pixeloffset1=0x0;
             let pixeloffset2=0x0;
             if(input==0) 
@@ -604,7 +604,7 @@ namespace colorbit {
 				}
             }
             this.show();
-			basic.pause(500);
+			basic.pause(1000);
         }
 
         /**
@@ -1030,7 +1030,7 @@ namespace colorbit {
         strip._length = numleds;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(30);
+        strip.setBrightness(20);
         strip.setPin(pin);
         strip.issequencecolor=false;
 		strip.lastcolor=BitColors.Red;
@@ -1054,7 +1054,7 @@ namespace colorbit {
         strip._length = 25;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(30);
+        strip.setBrightness(20);
         strip.setPin(pin);
         strip.issequencecolor=false;
 		strip.lastcolor=BitColors.Red;
