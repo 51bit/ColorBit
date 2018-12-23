@@ -299,6 +299,7 @@ namespace colorbit {
                 let pixeloffset4=FONTS[ch2][1];         
                 let a: number[] = [0, 0, 0, 0, 0];
                 let b: number[] = [0, 0, 0, 0, 0];
+                //I port this from stc51 8bit CPU, so I need to add 0xffff for 32bit ARM CPU here, might use 32bit in the future for pxt.
                 a = [pixeloffset1 >> 11, (0xffff & (pixeloffset1 << 5)) >> 11, (0xffff & (pixeloffset1 << 10)) >> 11, (((0xffff & (pixeloffset1 << 15)) >> 11) | (pixeloffset2 >> 12)), (0xffff & (pixeloffset2 << 4)) >> 11];
                 b = [pixeloffset3 >> 11, (0xffff & (pixeloffset3 << 5)) >> 11, (0xffff & (pixeloffset3 << 10)) >> 11, (((0xffff & (pixeloffset3 << 15)) >> 11) | (pixeloffset4 >> 12)), (0xffff & (pixeloffset4 << 4)) >> 11];
                 let c: number[] = [0, 0, 0, 0, 0];
