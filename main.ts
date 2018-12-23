@@ -42,7 +42,7 @@ enum BitColorMode {
 //% weight=5 color=#2699BF icon="\uf110"
 namespace colorbit {
     let FONTS = [
-	    [0x0,0x0],       //32: blank
+        [0x0,0x0],       //32: blank
         [0x4210,0x400],  //33: !
         [0x5280,0x0],    //34: "
         [0x57d5,0xf500], //35: #
@@ -138,7 +138,7 @@ namespace colorbit {
         [0xc218,0x8c00], //125: }
         [0x18,0x3000]    //126: ~
     ];
-	
+    
     /**
      * A NeoPixel strip
      */
@@ -152,7 +152,7 @@ namespace colorbit {
         _mode: BitColorMode;
         _matrixWidth: number; // number of leds in a matrix - if any
         issequencecolor: boolean;
-		lastcolor: number;
+        lastcolor: number;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
@@ -167,28 +167,28 @@ namespace colorbit {
             this.show();
         }
         
-		nextNum(): number {
-			if(this.lastcolor==BitColors.Red)
-				this.lastcolor=BitColors.Orange;
-			else if(this.lastcolor==BitColors.Orange)
-				this.lastcolor=BitColors.Yellow;
-			else if(this.lastcolor==BitColors.Yellow)
-				this.lastcolor=BitColors.Green;
-			else if(this.lastcolor==BitColors.Green)
-				this.lastcolor=BitColors.Blue;
-			else if(this.lastcolor==BitColors.Blue)
-				this.lastcolor=BitColors.Indigo;
-			else if(this.lastcolor==BitColors.Indigo)
-				this.lastcolor=BitColors.Violet;
-			else if(this.lastcolor==BitColors.Violet)
-				this.lastcolor=BitColors.Purple;
-			else if(this.lastcolor==BitColors.Purple)
-				this.lastcolor=BitColors.White;
-			else if(this.lastcolor==BitColors.White)
-				this.lastcolor=BitColors.Red;
-			return this.lastcolor;
-		}
-		
+        nextNum(): number {
+            if(this.lastcolor==BitColors.Red)
+                this.lastcolor=BitColors.Orange;
+            else if(this.lastcolor==BitColors.Orange)
+                this.lastcolor=BitColors.Yellow;
+            else if(this.lastcolor==BitColors.Yellow)
+                this.lastcolor=BitColors.Green;
+            else if(this.lastcolor==BitColors.Green)
+                this.lastcolor=BitColors.Blue;
+            else if(this.lastcolor==BitColors.Blue)
+                this.lastcolor=BitColors.Indigo;
+            else if(this.lastcolor==BitColors.Indigo)
+                this.lastcolor=BitColors.Violet;
+            else if(this.lastcolor==BitColors.Violet)
+                this.lastcolor=BitColors.Purple;
+            else if(this.lastcolor==BitColors.Purple)
+                this.lastcolor=BitColors.White;
+            else if(this.lastcolor==BitColors.White)
+                this.lastcolor=BitColors.Red;
+            return this.lastcolor;
+        }
+        
         /**
          * Set auto color. 
          * @param yes is sequence color?
@@ -210,11 +210,11 @@ namespace colorbit {
         //% weight=100
         //% parts="colorbit"
         setStringColor(input: string, rgb: number): void {
-		    if(input=="51bitTree") 
+            if(input=="51bitTree") 
             {
                 let pixeloffset1=0x23be;
                 let pixeloffset2=0x4200;
-				for (let i = 0; i < 16; ++i) {
+                for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
                     if((a & 1)==0) 
@@ -235,7 +235,7 @@ namespace colorbit {
                         this.setPixelRGB(i >> 0, rgb >> 0);
                 }
                 this.show();
-				return;
+                return;
             }
             for (let chindex = 0; chindex < input.length; chindex++) {
                 let ch: number = input.charCodeAt(chindex)-32;
@@ -245,36 +245,89 @@ namespace colorbit {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
                     if((a & 1)==0)
-					{
+                    {
                         this.setPixelRGB(i >> 0, 0);
-					}
+                    }
                     else if(this.issequencecolor)
-					{
+                    {
                         this.setPixelRGB(i >> 0, this.nextNum() >> 0);
-					}
+                    }
                     else
-					{
+                    {
                         this.setPixelRGB(i >> 0, rgb >> 0);
-					}
+                    }
                 }
                 for (let i = 16; i < 25; ++i) {
                     const index=31-i;
                     const a=pixeloffset2 >> index;
                     if((a & 1)==0)
-					{
+                    {
                         this.setPixelRGB(i >> 0, 0);
-					}
+                    }
                     else if(this.issequencecolor)
-					{
+                    {
                         this.setPixelRGB(i >> 0, this.nextNum() >> 0);
-					}
+                    }
                     else
-					{
+                    {
                         this.setPixelRGB(i >> 0, rgb >> 0);
-					}
+                    }
                 }
                 this.show();
-				basic.pause(1000);
+                basic.pause(1000);
+            }
+        }
+        
+        /**
+         * Show 51 LED string2 with a given color (range 0-255 for r, g, b). 
+         * @param input LED string showing
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="51bit_set_string_color2" block="%51bit|show 51bit string2 %input|with %rgb=colorbit_colors" 
+        //% blockGap=8
+        //% weight=100
+        //% parts="colorbit"
+        setStringColor2(input: string, rgb: number): void {
+            if (input == '') return;
+            input = ' ' + input + ' ';
+            for (let chindex = 0; chindex < input.length; chindex++) {
+                let ch: number = input.charCodeAt(chindex)-32;
+                let pixeloffset1=FONTS[ch][0];
+                let pixeloffset2=FONTS[ch][1]; 
+                let pixeloffset3=FONTS[(ch+1)][0];
+                let pixeloffset4=FONTS[(ch+1)][1];         
+                let a: number[] = [0, 0, 0, 0, 0]
+                let b: number[] = [0, 0, 0, 0, 0]
+                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>1,((pixeloffset1<<15)>>10)&(pixeloffset2>>12),(pixeloffset2<<4)>>11]
+                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>1,((pixeloffset3<<15)>>10)&(pixeloffset4>>12),(pixeloffset4<<4)>>11]
+                let c: number[] = [0, 0, 0, 0, 0]
+                for (let j = 0; j < 5; j++) {
+                    for (let k = 0; k < 5; k++)
+                        c[k] = (a[k] >> j) | ((b[k] << (8 - j)) >> 3)
+                    //display fonts
+                    let i = 0;
+                    for (; i < 25;)
+                    for (let kc = 0; kc < 5; kc++)
+                    {
+                        const index=5-kc;
+                        const a=c[i] >> index;
+                        if((a & 1)==0)
+                        {
+                            this.setPixelRGB(i >> 0, 0);
+                        }
+                        else if(this.issequencecolor)
+                        {
+                            this.setPixelRGB(i >> 0, this.nextNum() >> 0);
+                        }
+                        else
+                        {
+                            this.setPixelRGB(i >> 0, rgb >> 0);
+                        }
+                        i++;
+                    }
+                    this.show();
+                    basic.pause(500);
+                }
             }
         }
         
@@ -495,7 +548,7 @@ namespace colorbit {
         clear(): void {
             const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
-			this.show();
+            this.show();
         }
 
         /**
@@ -735,7 +788,7 @@ namespace colorbit {
         strip.setBrightness(20);
         strip.setPin(pin);
         strip.issequencecolor=false;
-		strip.lastcolor=BitColors.Red;
+        strip.lastcolor=BitColors.Red;
         return strip;
     }
     
@@ -759,7 +812,7 @@ namespace colorbit {
         strip.setBrightness(20);
         strip.setPin(pin);
         strip.issequencecolor=false;
-		strip.lastcolor=BitColors.Red;
+        strip.lastcolor=BitColors.Red;
         return strip;
     }
 
