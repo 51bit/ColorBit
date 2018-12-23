@@ -1,6 +1,6 @@
 let _51bit: colorbit.Strip = null
 input.onButtonPressed(Button.A, function () {
-    _51bit.setStringColor("51bitTree", colorbit.colors(BitColors.Green))
+    _51bit.setStringColor("ChristmasTree", colorbit.colors(BitColors.Green))
 })
 input.onButtonPressed(Button.B, function () {
     while (true) {
