@@ -290,30 +290,30 @@ namespace colorbit {
         setScrollStringColor(input: string, rgb: number): void {
             if (input == '') return;
             input = ' ' + input + ' ';
-            for (let chindex = 0; chindex < input.length; chindex++) {
+            for (let chindex = 0; chindex < input.length-1; chindex++) {
                 let ch: number = input.charCodeAt(chindex)-32;
                 let ch2: number = input.charCodeAt(chindex+1)-32;
                 let pixeloffset1=FONTS[ch][0];
                 let pixeloffset2=FONTS[ch][1]; 
                 let pixeloffset3=FONTS[ch2][0];
                 let pixeloffset4=FONTS[ch2][1];         
-                let a: number[] = [0, 0, 0, 0, 0]
-                let b: number[] = [0, 0, 0, 0, 0]
-                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>11,((pixeloffset1<<15)>>11)|(pixeloffset2>>12),(pixeloffset2<<4)>>11]
-                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>11,((pixeloffset3<<15)>>11)|(pixeloffset4>>12),(pixeloffset4<<4)>>11]
+                let a: number[] = [0, 0, 0, 0, 0];
+                let b: number[] = [0, 0, 0, 0, 0];
+                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>11,((pixeloffset1<<15)>>11)|(pixeloffset2>>12),(pixeloffset2<<4)>>11];
+                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>11,((pixeloffset3<<15)>>11)|(pixeloffset4>>12),(pixeloffset4<<4)>>11];
                 let c: number[] = [0, 0, 0, 0, 0]
                 for (let j = 0; j < 5; j++) {
                     for (let k = 0; k < 5; k++)
                         c[k] = (a[k] << j) | ((b[k] >> (5 - j)))
                     //display fonts
                     let i = 0;
-                    for (let cindex = 0; cindex < 5; cindex++)
+                    for (let row = 0; row < 5; row++)
                     {
                         for (let yiweiindex = 0; yiweiindex < 5; yiweiindex++)
                         {
                             const index=4-yiweiindex;
-                            const a=c[cindex] >> index;
-                            if((a & 1)==0)
+                            const currentrowbit=c[row] >> index;
+                            if((currentrowbit & 1)==0)
                             {
                                 this.setPixelRGB(i >> 0, 0);
                             }
