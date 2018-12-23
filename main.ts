@@ -298,8 +298,8 @@ namespace colorbit {
                 let pixeloffset4=FONTS[(ch+1)][1];         
                 let a: number[] = [0, 0, 0, 0, 0]
                 let b: number[] = [0, 0, 0, 0, 0]
-                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>1,((pixeloffset1<<15)>>10)|(pixeloffset2>>12),(pixeloffset2<<4)>>11]
-                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>1,((pixeloffset3<<15)>>10)|(pixeloffset4>>12),(pixeloffset4<<4)>>11]
+                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>11,((pixeloffset1<<15)>>10)|(pixeloffset2>>12),(pixeloffset2<<4)>>11]
+                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>11,((pixeloffset3<<15)>>10)|(pixeloffset4>>12),(pixeloffset4<<4)>>11]
                 let c: number[] = [0, 0, 0, 0, 0]
                 for (let j = 0; j < 5; j++) {
                     for (let k = 0; k < 5; k++)
