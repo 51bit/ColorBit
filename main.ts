@@ -299,29 +299,13 @@ namespace colorbit {
                 let pixeloffset4=FONTS[ch2][1];         
                 let a: number[] = [0, 0, 0, 0, 0];
                 let b: number[] = [0, 0, 0, 0, 0];
-                a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>11,((pixeloffset1<<15)>>11)|(pixeloffset2>>12),(pixeloffset2<<4)>>11];
-                b=[pixeloffset3>>11,(pixeloffset3<<5)>>11,(pixeloffset3<<10)>>11,((pixeloffset3<<15)>>11)|(pixeloffset4>>12),(pixeloffset4<<4)>>11];
-                let c: number[] = [0, 0, 0, 0, 0]
+                a = [pixeloffset1 >> 11, (0xffff & (pixeloffset1 << 5)) >> 11, (0xffff & (pixeloffset1 << 10)) >> 11, (((0xffff & (pixeloffset1 << 15)) >> 11) | (pixeloffset2 >> 12)), (0xffff & (pixeloffset2 << 4)) >> 11];
+                b = [pixeloffset3 >> 11, (0xffff & (pixeloffset3 << 5)) >> 11, (0xffff & (pixeloffset3 << 10)) >> 11, (((0xffff & (pixeloffset3 << 15)) >> 11) | (pixeloffset4 >> 12)), (0xffff & (pixeloffset4 << 4)) >> 11];
+                let c: number[] = [0, 0, 0, 0, 0];
                 for (let j = 0; j < 5; j++) {
                     for (let k = 0; k < 5; k++)
                         c[k] = (a[k] << j) | ((b[k] >> (5 - j)))
-                    //test
-                    let img: Image = null;
-                    img = images.createImage(`
-                    . . . . .
-                    . . . . .
-                    . . . . .
-                    . . . . .
-                    . . . . .
-                    `);
-                    for (let i = 0; i < 5; i++) {
-                        img.setPixel(0, i, (c[i] & 0x01) == 0x01)
-                        img.setPixel(1, i, (c[i] & 0x02) == 0x02)
-                        img.setPixel(2, i, (c[i] & 0x04) == 0x04)
-                        img.setPixel(3, i, (c[i] & 0x08) == 0x08)
-                        img.setPixel(4, i, (c[i] & 0x10) == 0x10)
-                    }
-                    img.showImage(0, 100);
+                    
                     //display fonts
                     let i = 0;
                     for (let row = 0; row < 5; row++)
