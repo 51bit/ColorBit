@@ -42,7 +42,7 @@ enum BitColorMode {
 //% weight=5 color=#2699BF icon="\uf110"
 namespace colorbit {
     let FONTS = [
-        [0x0,0x0],       //32: blank
+        [0x0,0x0],       //32: space
         [0x4210,0x400],  //33: !
         [0x5280,0x0],    //34: "
         [0x57d5,0xf500], //35: #
@@ -292,10 +292,11 @@ namespace colorbit {
             input = ' ' + input + ' ';
             for (let chindex = 0; chindex < input.length; chindex++) {
                 let ch: number = input.charCodeAt(chindex)-32;
+                let ch2: number = input.charCodeAt(chindex+1)-32;
                 let pixeloffset1=FONTS[ch][0];
                 let pixeloffset2=FONTS[ch][1]; 
-                let pixeloffset3=FONTS[(ch+1)][0];
-                let pixeloffset4=FONTS[(ch+1)][1];         
+                let pixeloffset3=FONTS[ch2][0];
+                let pixeloffset4=FONTS[ch2][1];         
                 let a: number[] = [0, 0, 0, 0, 0]
                 let b: number[] = [0, 0, 0, 0, 0]
                 a=[pixeloffset1>>11,(pixeloffset1<<5)>>11,(pixeloffset1<<10)>>11,((pixeloffset1<<15)>>11)|(pixeloffset2>>12),(pixeloffset2<<4)>>11]
