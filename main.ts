@@ -41,6 +41,102 @@ enum BitColorMode {
  */
 //% weight=5 color=#2699BF icon="\uf110"
 namespace colorbit {
+    let FONTS = [
+        [0x4210,0x400],  //33: !
+        [0x5280,0x0],    //34: "
+        [0x57d5,0xf500], //35: #
+        [0x765d,0x3700], //36: $
+        [0xcc88,0x9980], //37: %
+        [0x6499,0x2680], //38: &
+        [0x4200,0x0],    //39: '
+        [0x2210,0x8200], //40: (
+        [0x4108,0x4400], //41: )
+        [0x288,0xa000],  //42: *
+        [0x11c,0x4000],  //43: +
+        [0x0,0x4400],    //44: ,
+        [0x1c,0x0],      //45: -
+        [0x0,0x8000],    //46: .
+        [0x888,0x8800],  //47: /
+        [0x64a5,0x2600], //48: 0
+        [0x2308,0x4700], //49: 1
+        [0xe099,0xf00],  //50: 2
+        [0xf089,0x2600], //51: 3
+        [0x32a5,0xf100], //52: 4
+        [0xfc3c,0x1f00], //53: 5
+        [0x111d,0x1700], //54: 6
+        [0xf888,0x8800], //55: 7
+        [0x745d,0x1700], //56: 8
+        [0x745c,0x4400], //57: 9
+        [0x200,0x8000],  //58: :
+        [0x100,0x4400],  //59: ;
+        [0x1110,0x4100], //60: <
+        [0x380,0xe000],  //61: =
+        [0x4104,0x4400], //62: >
+        [0x744c,0x200],  //63: ?
+        [0x746b,0x3600], //64: @
+        [0x64bd,0x2900], //65: A
+        [0xe4b9,0x2e00], //66: B
+        [0x7421,0x700],  //67: C
+        [0xe4a5,0x2e00], //68: D
+        [0xf439,0xf00],  //69: E
+        [0xf439,0x800],  //70: F
+        [0x7427,0x1700], //71: G
+        [0x94bd,0x2900], //72: H
+        [0xe210,0x8e00], //73: I
+        [0xf885,0x2600], //74: J
+        [0x9531,0x4900], //75: K
+        [0x8421,0xf00],  //76: L
+        [0x8eeb,0x1880], //77: M
+        [0x8e6b,0x3880], //78: N
+        [0x64a5,0x2600], //79: O
+        [0xe4b9,0x800],  //80: P
+        [0x64a4,0xc300], //81: Q
+        [0xe4b9,0x2880], //82: R
+        [0x7418,0x2e00], //83: S
+        [0xf908,0x4200], //84: T
+        [0x94a5,0x2600], //85: U
+        [0x8c62,0xa200], //86: V
+        [0x8c6b,0xb880], //87: W
+        [0x9499,0x2900], //88: X
+        [0x8a88,0x4200], //89: Y
+        [0xf111,0xf00],  //90: Z
+        [0x7210,0x8700,  //91: [
+        [0x8208,0x2080], //92: \
+        [0x7084,0x2700], //93: ]
+        [0x2280,0x0],    //94: ^
+        [0x0,0xf80],     //95: _
+        [0x4100,0x0],    //96: `
+        [0x3a5,0x2780],  //97: a
+        [0x8439,0x2e00], //98: b
+        [0x3a1,0x700],   //99: c
+        [0x109d,0x2700], //100: d
+        [0x64b9,0x700],  //101: e
+        [0x3238,0x8400], //102: f
+        [0x749c,0x2600], //103: g
+        [0x8439,0x2900], //104: h
+        [0x4010,0x8400], //105: i
+        [0x1004,0x2600], //106: j
+        [0x8531,0x4900], //107: k
+        [0x4210,0x8300], //108: l
+        [0x6eb,0x1880],  //109: m
+        [0x725,0x2900],  //110: n
+        [0x325,0x2600],  //111: o
+        [0x725,0xc800],  //112: p
+        [0x3a4,0xe100],  //113: q
+        [0x5b1,0x800],   //114: r
+        [0x190,0x4c00],  //115: s
+        [0x423c,0x8380], //116: t
+        [0x4a5,0x2780],  //117: u
+        [0x462,0xa200],  //118: v
+        [0x463,0x5d80],  //119: w
+        [0x498,0xc900],  //120: x
+        [0x454,0x4c00],  //121: y
+        [0x788,0x8f00],  //122: z
+        [0x3118,0x4300], //123: {
+        [0x4210,0x8400], //124: |
+        [0xc218,0x8c00], //125: }
+        [0x18,0x3000],   //126: ~
+    ];
     /**
      * A NeoPixel strip
      */
@@ -140,319 +236,9 @@ namespace colorbit {
 				return;
             }
             for (let index = 0; index < input.length; index++) {
-                let ch: string = input.charAt(index);
-                let pixeloffset1=0x0;
-                let pixeloffset2=0x0;
-                if(ch=="A") 
-                {
-                    pixeloffset1=0x64bd;
-                    pixeloffset2=0x2900;
-                }
-                else if(ch=="B")
-                {
-                    pixeloffset1=0xe4b9;
-                    pixeloffset2=0x2e00;
-                }
-                else if(ch=="C")
-                {
-                    pixeloffset1=0x7421;
-                    pixeloffset2=0x700;
-                }
-                else if(ch=="D")
-                {
-                    pixeloffset1=0xe4a5;
-                    pixeloffset2=0x2e00;
-                }
-                else if(ch=="E")
-                {
-                    pixeloffset1=0xf439;
-                    pixeloffset2=0xf00;
-                }
-                else if(ch=="F")
-                {
-                    pixeloffset1=0xf439;
-                    pixeloffset2=0x800;
-                }
-                else if(ch=="G")
-                {
-                    pixeloffset1=0x7427;
-                    pixeloffset2=0x1700;
-                }
-                else if(ch=="H")
-                {
-                    pixeloffset1=0x94bd;
-                    pixeloffset2=0x2900;
-                }
-                else if(ch=="I")
-                {
-                    pixeloffset1=0xe210;
-                    pixeloffset2=0x8e00;
-                }
-                else if(ch=="J")
-                {
-                    pixeloffset1=0xf885;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="K")
-                {
-                    pixeloffset1=0x9531;
-                    pixeloffset2=0x4900;
-                }
-                else if(ch=="L")
-                {
-                    pixeloffset1=0x8421;
-                    pixeloffset2=0xf00;
-                }
-                else if(ch=="M")
-                {
-                    pixeloffset1=0x8eeb;
-                    pixeloffset2=0x1880;
-                }
-                else if(ch=="N")
-                {
-                    pixeloffset1=0x8e6b;
-                    pixeloffset2=0x3880;
-                }
-                else if(ch=="O")
-                {
-                    pixeloffset1=0x64a5;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="P")
-                {
-                    pixeloffset1=0xe4b9;
-                    pixeloffset2=0x800;
-                }
-                else if(ch=="Q")
-                {
-                    pixeloffset1=0x64a4;
-                    pixeloffset2=0xc300;
-                }
-                else if(ch=="R")
-                {
-                    pixeloffset1=0xe4b9;
-                    pixeloffset2=0x2880;
-                }
-                else if(ch=="S")
-                {
-                    pixeloffset1=0x7418;
-                    pixeloffset2=0x2e00;
-                }
-                else if(ch=="T")
-                {
-                    pixeloffset1=0xf908;
-                    pixeloffset2=0x4200;
-                }
-                else if(ch=="U")
-                {
-                    pixeloffset1=0x94a5;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="V")
-                {
-                    pixeloffset1=0x8c62;
-                    pixeloffset2=0xa200;
-                }
-                else if(ch=="W")
-                {
-                    pixeloffset1=0x8c6b;
-                    pixeloffset2=0xb880;
-                }
-                else if(ch=="X")
-                {
-                    pixeloffset1=0x9499;
-                    pixeloffset2=0x2900;
-                }
-                else if(ch=="Y")
-                {
-                    pixeloffset1=0x8a88;
-                    pixeloffset2=0x4200;
-                }
-                else if(ch=="Z")
-                {
-                    pixeloffset1=0xf111;
-                    pixeloffset2=0xf00;
-                }
-                else if(ch=="0") 
-                {
-                    pixeloffset1=0x64a5;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="1")
-                {
-                    pixeloffset1=0x2308;
-                    pixeloffset2=0x4700;
-                }
-                else if(ch=="2")
-                {
-                    pixeloffset1=0xe099;
-                    pixeloffset2=0xf00;
-                }
-                else if(ch=="3")
-                {
-                    pixeloffset1=0xf089;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="4")
-                {
-                    pixeloffset1=0x32a5;
-                    pixeloffset2=0xf100;
-                }
-                else if(ch=="5")
-                {
-                    pixeloffset1=0xfc3c;
-                    pixeloffset2=0x1f00;
-                }
-                else if(ch=="6")
-                {
-                    pixeloffset1=0x111d;
-                    pixeloffset2=0x1700;
-                }
-                else if(ch=="7")
-                {
-                    pixeloffset1=0xf888;
-                    pixeloffset2=0x8800;
-                }
-                else if(ch=="8")
-                {
-                    pixeloffset1=0x745d;
-                    pixeloffset2=0x1700;
-                }
-                else if(ch=="9")
-                {
-                    pixeloffset1=0x745c;
-                    pixeloffset2=0x4400;
-                }
-                else if(ch=="a") 
-                {
-                    pixeloffset1=0x3a5;
-                    pixeloffset2=0x2780;
-                }
-                else if(ch=="b")
-                {
-                    pixeloffset1=0x8439;
-                    pixeloffset2=0x2e00;
-                }
-                else if(ch=="c")
-                {
-                    pixeloffset1=0x3a1;
-                    pixeloffset2=0x700;
-                }
-                else if(ch=="d")
-                {
-                    pixeloffset1=0x109d;
-                    pixeloffset2=0x2700;
-                }
-                else if(ch=="e")
-                {
-                    pixeloffset1=0x64b9;
-                    pixeloffset2=0x700;
-                }
-                else if(ch=="f")
-                {
-                    pixeloffset1=0x3238;
-                    pixeloffset2=0x8400;
-                }
-                else if(ch=="g")
-                {
-                    pixeloffset1=0x749c;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="h")
-                {
-                    pixeloffset1=0x8439;
-                    pixeloffset2=0x2900;
-                }
-                else if(ch=="i")
-                {
-                    pixeloffset1=0x4010;
-                    pixeloffset2=0x8400;
-                }
-                else if(ch=="j")
-                {
-                    pixeloffset1=0x1004;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="k")
-                {
-                    pixeloffset1=0x8531;
-                    pixeloffset2=0x4900;
-                }
-                else if(ch=="l")
-                {
-                    pixeloffset1=0x4210;
-                    pixeloffset2=0x8300;
-                }
-                else if(ch=="m")
-                {
-                    pixeloffset1=0x6eb;
-                    pixeloffset2=0x1880;
-                }
-                else if(ch=="n")
-                {
-                    pixeloffset1=0x725;
-                    pixeloffset2=0x2900;
-                }
-                else if(ch=="o")
-                {
-                    pixeloffset1=0x325;
-                    pixeloffset2=0x2600;
-                }
-                else if(ch=="p")
-                {
-                    pixeloffset1=0x725;
-                    pixeloffset2=0xc800;
-                }
-                else if(ch=="q")
-                {
-                    pixeloffset1=0x3a4;
-                    pixeloffset2=0xe100;
-                }
-                else if(ch=="r")
-                {
-                    pixeloffset1=0x5b1;
-                    pixeloffset2=0x800;
-                }
-                else if(ch=="s")
-                {
-                    pixeloffset1=0x190;
-                    pixeloffset2=0x4c00;
-                }
-                else if(ch=="t")
-                {
-                    pixeloffset1=0x423c;
-                    pixeloffset2=0x8380;
-                }
-                else if(ch=="u")
-                {
-                    pixeloffset1=0x4a5;
-                    pixeloffset2=0x2780;
-                }
-                else if(ch=="v")
-                {
-                    pixeloffset1=0x462;
-                    pixeloffset2=0xa200;
-                }
-                else if(ch=="w")
-                {
-                    pixeloffset1=0x463;
-                    pixeloffset2=0x5d80;
-                }
-                else if(ch=="x")
-                {
-                    pixeloffset1=0x498;
-                    pixeloffset2=0xc900;
-                }
-                else if(ch=="y")
-                {
-                    pixeloffset1=0x454;
-                    pixeloffset2=0x4c00;
-                }
-                else if(ch=="z")
-                {
-                    pixeloffset1=0x788;
-                    pixeloffset2=0x8f00;
-                }
+                let ch = input.charAt(index);
+                let pixeloffset1=FONTS[ch-33][0];
+                let pixeloffset2=FONTS[ch-33][1];
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
@@ -504,7 +290,7 @@ namespace colorbit {
             let indexl=0;
             if(input==0)
             {
-                this.showFont(0, rgb);
+                this.setStringColor("0", rgb);
                 return;
             }
             while(input>=1)
@@ -517,94 +303,8 @@ namespace colorbit {
             while(--indexl>=0) 
             {
                 let y=a[indexl];
-                if((y>=0) && (y<=9)) this.showFont(y, rgb);
+                if((y>=0) && (y<=9)) this.setStringColor(''+y, rgb);
             }
-        }
-        showFont (input: number, rgb: number): void {
-            let pixeloffset1=0x0;
-            let pixeloffset2=0x0;
-            if(input==0) 
-            {
-                pixeloffset1=0x64a5;
-                pixeloffset2=0x2600;
-            }
-            else if(input==1)
-            {
-                pixeloffset1=0x2308;
-                pixeloffset2=0x4700;
-            }
-            else if(input==2)
-            {
-                pixeloffset1=0xe099;
-                pixeloffset2=0xf00;
-            }
-            else if(input==3)
-            {
-                pixeloffset1=0xf089;
-                pixeloffset2=0x2600;
-            }
-            else if(input==4)
-            {
-                pixeloffset1=0x32a5;
-                pixeloffset2=0xf100;
-            }
-            else if(input==5)
-            {
-                pixeloffset1=0xfc3c;
-                pixeloffset2=0x1f00;
-            }
-            else if(input==6)
-            {
-                pixeloffset1=0x111d;
-                pixeloffset2=0x1700;
-            }
-            else if(input==7)
-            {
-                pixeloffset1=0xf888;
-                pixeloffset2=0x8800;
-            }
-            else if(input==8)
-            {
-                pixeloffset1=0x745d;
-                pixeloffset2=0x1700;
-            }
-            else if(input==9)
-            {
-                pixeloffset1=0x745c;
-                pixeloffset2=0x4400;
-            }
-            for (let i = 0; i < 16; ++i) {
-                const index=15-i;
-                const a=pixeloffset1 >> index;
-                if((a & 1)==0){
-                    this.setPixelRGB(i >> 0, 0);
-				}
-                else if(this.issequencecolor)
-				{
-                    this.setPixelRGB(i >> 0, this.nextNum() >> 0);
-				}
-                else
-				{
-                    this.setPixelRGB(i >> 0, rgb >> 0);
-				}
-            }
-            for (let i = 16; i < 25; ++i) {
-                const index=31-i;
-                const a=pixeloffset2 >> index;
-                if((a & 1)==0){
-                    this.setPixelRGB(i >> 0, 0);
-				}
-                else if(this.issequencecolor)
-				{
-                    this.setPixelRGB(i >> 0, this.nextNum() >> 0);
-				}
-                else 
-				{
-                    this.setPixelRGB(i >> 0, rgb >> 0);
-				}
-            }
-            this.show();
-			basic.pause(1000);
         }
 
         /**
