@@ -42,6 +42,7 @@ enum BitColorMode {
 //% weight=5 color=#2699BF icon="\uf110"
 namespace colorbit {
     let FONTS = [
+	    [0x0,0x0],       //32: blank
         [0x4210,0x400],  //33: !
         [0x5280,0x0],    //34: "
         [0x57d5,0xf500], //35: #
@@ -135,8 +136,8 @@ namespace colorbit {
         [0x3118,0x4300], //123: {
         [0x4210,0x8400], //124: |
         [0xc218,0x8c00], //125: }
-        [0x18,0x3000]   //126: ~
-    ]
+        [0x18,0x3000]    //126: ~
+    ],
 	
     /**
      * A NeoPixel strip
@@ -238,8 +239,8 @@ namespace colorbit {
             }
             for (let index = 0; index < input.length; index++) {
                 let ch = input.charAt(index);
-                let pixeloffset1=FONTS[ch-33][0];
-                let pixeloffset2=FONTS[ch-33][1];
+                let pixeloffset1=FONTS[ch-32][0];
+                let pixeloffset2=FONTS[ch-32][1];
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
