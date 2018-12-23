@@ -279,15 +279,15 @@ namespace colorbit {
         }
         
         /**
-         * Show 51 LED string2 with a given color (range 0-255 for r, g, b). 
+         * Show 51 LED Scroll string with a given color (range 0-255 for r, g, b). 
          * @param input LED string showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_string_color2" block="%51bit|show 51bit string2 %input|with %rgb=colorbit_colors" 
+        //% blockId="51bit_set_scrollstring_color" block="%51bit|show 51bit scroll string %input|with %rgb=colorbit_colors" 
         //% blockGap=8
-        //% weight=100
+        //% weight=99
         //% parts="colorbit"
-        setStringColor2(input: string, rgb: number): void {
+        setScrollStringColor(input: string, rgb: number): void {
             if (input == '') return;
             input = ' ' + input + ' ';
             for (let chindex = 0; chindex < input.length; chindex++) {
