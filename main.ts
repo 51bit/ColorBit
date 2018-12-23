@@ -289,7 +289,7 @@ namespace colorbit {
         //% parts="colorbit"
         setScrollStringColor(input: string, rgb: number): void {
             if (input == '') return;
-            input = ' ' + input + ' ';
+            input = input + ' ';
             for (let chindex = 0; chindex < input.length-1; chindex++) {
                 let ch: number = input.charCodeAt(chindex)-32;
                 let ch2: number = input.charCodeAt(chindex+1)-32;
