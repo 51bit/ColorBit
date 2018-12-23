@@ -303,7 +303,7 @@ namespace colorbit {
                 let c: number[] = [0, 0, 0, 0, 0]
                 for (let j = 0; j < 5; j++) {
                     for (let k = 0; k < 5; k++)
-                        c[k] = (a[k] >> j) | ((b[k] << (8 - j)) >> 3)
+                        c[k] = (a[k] << j) | ((b[k] >> (5 - j)))
                     //display fonts
                     let i = 0;
                     for (let cindex = 0; cindex < 5; cindex++)
