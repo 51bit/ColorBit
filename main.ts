@@ -237,8 +237,8 @@ namespace colorbit {
                 this.show();
 				return;
             }
-            for (let index = 0; index < input.length; index++) {
-                let ch: number = input.charCodeAt(index)-32;
+            for (let chindex = 0; chindex < input.length; chindex++) {
+                let ch: number = input.charCodeAt(chindex)-32;
                 let pixeloffset1=FONTS[ch][0];
                 let pixeloffset2=FONTS[ch][1];
                 for (let i = 0; i < 16; ++i) {
