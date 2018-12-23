@@ -306,23 +306,7 @@ namespace colorbit {
                 for (let j = 0; j < 5; j++) {
                     for (let k = 0; k < 5; k++)
                         c[k] = (a[k] << j) | ((b[k] >> (5 - j)))
-                    //test Microbit showing
-                    let img: Image = null;
-                    img = images.createImage(`
-                        . . . . .
-                        . . . . .
-                        . . . . .
-                        . . . . .
-                        . . . . .
-                        `);
-                    for (let i = 0; i < 5; i++) {
-                    img.setPixel(4, i, (c[i] & 0x01) == 0x01)
-                    img.setPixel(3, i, (c[i] & 0x02) == 0x02)
-                    img.setPixel(2, i, (c[i] & 0x04) == 0x04)
-                    img.setPixel(1, i, (c[i] & 0x08) == 0x08)
-                    img.setPixel(0, i, (c[i] & 0x10) == 0x10)
-                    }
-                    img.showImage(0, 500);
+                    
                     //display fonts
                     let i = 0;
                     for (let row = 0; row < 5; row++)
@@ -347,7 +331,7 @@ namespace colorbit {
                         }
                     }
                     this.show();
-                    basic.pause(500);
+                    basic.pause(200);
                 }
             }
         }
