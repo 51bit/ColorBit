@@ -210,7 +210,7 @@ namespace colorbit {
         //% weight=100
         //% parts="colorbit"
         setStringColor(input: string, rgb: number): void {
-            if(input=="51bitTree") 
+            if(input=="ChristmasTree") 
             {
                 let pixeloffset1=0x23be;
                 let pixeloffset2=0x4200;
