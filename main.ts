@@ -306,12 +306,12 @@ namespace colorbit {
                         c[k] = (a[k] >> j) | ((b[k] << (8 - j)) >> 3)
                     //display fonts
                     let i = 0;
-                    for (let kc = 0; kc < 5; kc++)
+                    for (let cindex = 0; cindex < 5; cindex++)
                     {
                         for (let yiweiindex = 0; yiweiindex < 5; yiweiindex++)
                         {
                             const index=4-yiweiindex;
-                            const a=c[kc] >> index;
+                            const a=c[cindex] >> index;
                             if((a & 1)==0)
                             {
                                 this.setPixelRGB(i >> 0, 0);
