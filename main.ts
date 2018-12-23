@@ -321,7 +321,7 @@ namespace colorbit {
                         img.setPixel(3, i, (c[i] & 0x08) == 0x08)
                         img.setPixel(4, i, (c[i] & 0x10) == 0x10)
                     }
-                    img.showImage(0, delay);
+                    img.showImage(0, 100);
                     //display fonts
                     let i = 0;
                     for (let row = 0; row < 5; row++)
