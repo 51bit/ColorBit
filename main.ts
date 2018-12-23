@@ -238,9 +238,9 @@ namespace colorbit {
 				return;
             }
             for (let index = 0; index < input.length; index++) {
-                let ch = input.charAt(index);
-                let pixeloffset1=FONTS[ch-32][0];
-                let pixeloffset2=FONTS[ch-32][1];
+                let ch = input.charAt(index)-32;
+                let pixeloffset1=FONTS[ch][0];
+                let pixeloffset2=FONTS[ch][1];
                 for (let i = 0; i < 16; ++i) {
                     const index=15-i;
                     const a=pixeloffset1 >> index;
