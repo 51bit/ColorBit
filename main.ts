@@ -136,7 +136,8 @@ namespace colorbit {
         [0x4210,0x8400], //124: |
         [0xc218,0x8c00], //125: }
         [0x18,0x3000],   //126: ~
-    ];
+    ]
+	
     /**
      * A NeoPixel strip
      */
