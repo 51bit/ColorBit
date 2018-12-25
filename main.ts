@@ -158,7 +158,7 @@ namespace colorbit {
          * Shows all LEDs to a given color (range 0-255 for r, g, b). 
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_set_strip_color" block="%51bit|show color %rgb=colorbit_colors" 
+        //% blockId="colorbit_set_strip_color" block="%colorbit_51bit|show color %rgb=colorbit_colors" 
         //% weight=85 blockGap=8
         //% parts="colorbit"
         showColor(rgb: number) {
@@ -193,7 +193,7 @@ namespace colorbit {
          * Set multiple color. 
          * @param yes is multiple color for each light?
          */
-        //% blockId="colorbit_set_multi_color" block="%51bit|Set each light with multiple color: %yes" 
+        //% blockId="colorbit_set_multi_color" block="%colorbit_51bit|Set each light with multiple color: %yes" 
         //% weight=12 blockGap=8
         //% parts="colorbit"
         setMultiColor(yes: boolean) {
@@ -215,18 +215,18 @@ namespace colorbit {
 		}
 	
         /**
-         * Show 51 LED string with a given color (range 0-255 for r, g, b). 
+         * Show ColorBit string with a given color (range 0-255 for r, g, b). 
          * @param input LED string showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_string_color" block="%51bit|show 51bit string %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_set_string_color" block="%colorbit_51bit|show ColorBit string %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
         setStringColor(input: string, rgb: number): void {
-            if(input.indexOf("51bitpasswd:",0)===0) 
+            if(input.indexOf("colorbitpasswd:",0)===0) 
             {
-				//ChristmasTree: "51bitpasswd:0x23be:0x4200"
+				//ChristmasTree: "colorbitpasswd:0x23be:0x4200"
                 let pixeloffset1=this.fn_HextoDec(input.substr(12, 6));
                 let pixeloffset2=this.fn_HextoDec(input.substr(19, 6));
                 for (let i = 0; i < 16; ++i) {
@@ -294,11 +294,11 @@ namespace colorbit {
         }
         
         /**
-         * Show 51 LED Scroll string with a given color (range 0-255 for r, g, b). 
+         * Show ColorBit Scroll string with a given color (range 0-255 for r, g, b). 
          * @param input LED string showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_scrollstring_color" block="%51bit|show 51bit scroll string %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_set_scrollstring_color" block="%colorbit_51bit|show ColorBit scroll string %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=99
         //% parts="colorbit"
@@ -352,29 +352,67 @@ namespace colorbit {
         }
         
          /**
-         * Show 51 LED number with a given color (range 0-255 for r, g, b). 
+         * Show ColorBit number with a given color (range 0-255 for r, g, b). 
          * @param input LED number showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_int_color" block="%51bit|show 51bit number %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_set_int_color" block="%colorbit_51bit|show ColorBit number %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
         setIntColor(input: number, rgb: number): void {
-            this.setStringColor(''+input, rgb);
+            let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
+            let indexl=0;
+            if(input==0)
+            {
+                this.setStringColor("0", rgb);
+                return;
+            }
+            while(input>=1)
+            {
+                a[indexl++] = input%10;
+                input=Math.trunc(input/10);
+            }
+            
+            //reverse each bit
+            while(--indexl>=0) 
+            {
+                let y=a[indexl];
+                if((y>=0) && (y<=9)) this.setStringColor(''+y, rgb);
+            }
         }
 		
 		/**
-         * Show 51 LED Scroll int with a given color (range 0-255 for r, g, b). 
+         * Show ColorBit Scroll int with a given color (range 0-255 for r, g, b). 
          * @param input LED int showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="51bit_set_scrollint_color" block="%51bit|show 51bit scroll int %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_set_scrollint_color" block="%colorbit_51bit|show ColorBit scroll int %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=99
         //% parts="colorbit"
         setScrollIntColor(input: number, rgb: number): void {
-			this.setScrollStringColor(''+input, rgb);
+            let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
+            let str: string = "";
+            let indexl=0;
+            if(input==0)
+            {
+                this.setStringColor("0", rgb);
+                return;
+            }
+            while(input>=1)
+            {
+                a[indexl++] = input%10;
+                input=Math.trunc(input/10);
+            }
+            
+            //reverse each bit
+            while(--indexl>=0) 
+            {
+                let y=a[indexl];
+                if((y>=0) && (y<=9)) str = str+ y;
+            }
+			this.setScrollStringColor(str, rgb);
 		}
 
         /**
@@ -382,7 +420,7 @@ namespace colorbit {
          * @param startHue the start hue value for the rainbow, eg: 1
          * @param endHue the end hue value for the rainbow, eg: 360
          */
-        //% blockId="colorbit_set_strip_rainbow" block="%51bit|show rainbow from %startHue|to %endHue" 
+        //% blockId="colorbit_set_strip_rainbow" block="%colorbit_51bit|show rainbow from %startHue|to %endHue" 
         //% weight=85 blockGap=8
         //% parts="colorbit"
         //% advanced=true
@@ -450,7 +488,7 @@ namespace colorbit {
          * @param high maximum value, eg: 255
          */
         //% weight=84
-        //% blockId=colorbit_show_bar_graph block="%51bit|show bar graph of %value|up to %high" 
+        //% blockId=colorbit_show_bar_graph block="%colorbit_51bit|show bar graph of %value|up to %high" 
         //% icon="\uf080"
         //% parts="colorbit" advanced=true
         showBarGraph(value: number, high: number): void {
@@ -487,7 +525,7 @@ namespace colorbit {
          * @param pixeloffset position of the NeoPixel in the strip
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_set_pixel_color" block="%51bit|set pixel color at %pixeloffset|to %rgb=colorbit_colors" 
+        //% blockId="colorbit_set_pixel_color" block="%colorbit_51bit|set pixel color at %pixeloffset|to %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=80
         //% parts="colorbit" advanced=true
@@ -499,7 +537,7 @@ namespace colorbit {
          * Sets the number of pixels in a matrix shaped strip
          * @param width number of pixels in a row
          */
-        //% blockId=colorbit_set_matrix_width block="%51bit|set matrix width %width"
+        //% blockId=colorbit_set_matrix_width block="%colorbit_51bit|set matrix width %width"
         //% blockGap=8
         //% weight=5
         //% parts="colorbit" advanced=true
@@ -514,7 +552,7 @@ namespace colorbit {
          * @param y horizontal position
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_set_matrix_color" block="%51bit|set matrix color at x %x|y %y|to %rgb=colorbit_colors" 
+        //% blockId="colorbit_set_matrix_color" block="%colorbit_51bit|set matrix color at x %x|y %y|to %rgb=colorbit_colors" 
         //% weight=4
         //% parts="colorbit" advanced=true
         setMatrixColor(x: number, y: number, rgb: number) {
@@ -533,7 +571,7 @@ namespace colorbit {
          * @param pixeloffset position of the LED in the strip
          * @param white brightness of the white LED
          */
-        //% blockId="colorbit_set_pixel_white" block="%51bit|set pixel white LED at %pixeloffset|to %white" 
+        //% blockId="colorbit_set_pixel_white" block="%colorbit_51bit|set pixel white LED at %pixeloffset|to %white" 
         //% blockGap=8
         //% weight=80
         //% parts="colorbit" advanced=true
@@ -546,7 +584,7 @@ namespace colorbit {
         /** 
          * Send all the changes to the strip.
          */
-        //% blockId="colorbit_show" block="%51bit|show" blockGap=8
+        //% blockId="colorbit_show" block="%colorbit_51bit|show" blockGap=8
         //% weight=79 advanced=true
         //% parts="colorbit"
         show() {
@@ -557,7 +595,7 @@ namespace colorbit {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="colorbit_clear" block="%51bit|clear"
+        //% blockId="colorbit_clear" block="%colorbit_51bit|clear"
         //% weight=76
         //% parts="colorbit"
         clear(): void {
@@ -569,7 +607,7 @@ namespace colorbit {
         /**
          * Gets the number of pixels declared on the strip
          */
-        //% blockId="colorbit_length" block="%51bit|length" blockGap=8
+        //% blockId="colorbit_length" block="%colorbit_51bit|length" blockGap=8
         //% weight=60 advanced=true
         length() {
             return this._length;
@@ -579,7 +617,7 @@ namespace colorbit {
          * Set the brightness of the strip. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="colorbit_set_brightness" block="%51bit|set brightness %brightness" blockGap=8
+        //% blockId="colorbit_set_brightness" block="%colorbit_51bit|set brightness %brightness" blockGap=8
         //% weight=59
         //% parts="colorbit" advanced=true
         setBrightness(brightness: number): void {
@@ -589,7 +627,7 @@ namespace colorbit {
         /**
          * Apply brightness to current colors using a quadratic easing function.
          **/
-        //% blockId="colorbit_each_brightness" block="%51bit|ease brightness" blockGap=8
+        //% blockId="colorbit_each_brightness" block="%colorbit_51bit|ease brightness" blockGap=8
         //% weight=58
         //% parts="colorbit" advanced=true
         easeBrightness(): void {
@@ -620,7 +658,7 @@ namespace colorbit {
          * @param length number of LEDs in the range. eg: 4
          */
         //% weight=89
-        //% blockId="colorbit_range" block="%51bit|range from %start|with %length|leds"
+        //% blockId="colorbit_range" block="%colorbit_51bit|range from %start|with %length|leds"
         //% parts="colorbit"
         //% blockSetVariable=range
         //% advanced=true
@@ -644,7 +682,7 @@ namespace colorbit {
          * You need to call ``show`` to make the changes visible.
          * @param offset number of pixels to shift forward, eg: 1
          */
-        //% blockId="colorbit_shift" block="%51bit|shift pixels by %offset" blockGap=8
+        //% blockId="colorbit_shift" block="%colorbit_51bit|shift pixels by %offset" blockGap=8
         //% weight=40
         //% parts="colorbit"
         //% advanced=true
@@ -659,7 +697,7 @@ namespace colorbit {
          * You need to call ``show`` to make the changes visible.
          * @param offset number of pixels to rotate forward, eg: 1
          */
-        //% blockId="colorbit_rotate" block="%51bit|rotate pixels by %offset" blockGap=8
+        //% blockId="colorbit_rotate" block="%colorbit_51bit|rotate pixels by %offset" blockGap=8
         //% weight=39
         //% parts="colorbit"
         //% advanced=true
@@ -683,7 +721,7 @@ namespace colorbit {
         /**
          * Estimates the electrical current (mA) consumed by the current light configuration.
          */
-        //% weight=9 blockId=colorbit_power block="%51bit|power (mA)"
+        //% weight=9 blockId=colorbit_power block="%colorbit_51bit|power (mA)"
         //% advanced=true
         power(): number {
             const stride = this._mode === BitColorMode.RGBW ? 4 : 3;
@@ -790,7 +828,7 @@ namespace colorbit {
     //% weight=90 blockGap=8
     //% parts="colorbit"
     //% trackArgs=0,2
-    //% blockSetVariable=51bit
+    //% blockSetVariable=colorbit_51bit
     //% advanced=true
     export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 25, mode: BitColorMode): Strip {
         let strip = new Strip();
@@ -800,7 +838,7 @@ namespace colorbit {
         strip._length = numleds;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(20);
+        strip.setBrightness(16);
         strip.setPin(pin);
         strip.ismulticolor=false;
         strip.lastcolor=BitColors.Red;
@@ -811,11 +849,11 @@ namespace colorbit {
      * Init colorbit.
      * @param pin the pin where the colorbit is connected.
      */
-    //% blockId="colorbit_initcolorbit" block="51bit leds at pin %pin| as %mode"
+    //% blockId="colorbit_initcolorbit" block="ColorBit leds at pin %pin| as %mode"
     //% weight=101 blockGap=8
     //% parts="colorbit"
     //% trackArgs=0,2
-    //% blockSetVariable=51bit
+    //% blockSetVariable=colorbit_51bit
     export function initColorBit(pin: DigitalPin = DigitalPin.P0, mode: BitColorMode): Strip {
         let strip = new Strip();
         let stride = mode === BitColorMode.RGBW ? 4 : 3;
@@ -824,7 +862,7 @@ namespace colorbit {
         strip._length = 25;
         strip._mode = mode;
         strip._matrixWidth = 0;
-        strip.setBrightness(20);
+        strip.setBrightness(16);
         strip.setPin(pin);
         strip.ismulticolor=false;
         strip.lastcolor=BitColors.Red;
