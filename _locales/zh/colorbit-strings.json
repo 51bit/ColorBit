@@ -20,6 +20,7 @@
   "colorbit.Strip.setIntColor|block": "%51bit|显示 51bit 数字： %input|且颜色为 %rgb=colorbit_colors",
   "colorbit.Strip.setStringColor|block": "%51bit|显示 51bit 字符串： %input|且颜色为 %rgb=colorbit_colors",
   "colorbit.Strip.setScrollStringColor|block": "%51bit|显示 51bit 滚动字符串： %input|且颜色为 %rgb=colorbit_colors",
+  "colorbit.Strip.setScrollIntColor|block": "%51bit|显示 51bit 滚动数字： %input|且颜色为 %rgb=colorbit_colors",
   "colorbit.Strip.setPixelWhiteLED|block": "%51bit|设置白灯(RGB+W) 像素%pixeloffset|为 %white",
   "colorbit.Strip.show|block": "%51bit|刷新显示",
   "colorbit.Strip.clear|block": "%51bit|清除显示",
