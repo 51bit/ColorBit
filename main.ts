@@ -224,9 +224,9 @@ namespace colorbit {
         //% weight=100
         //% parts="colorbit"
         setStringColor(input: string, rgb: number): void {
-            if(input.indexOf("colorbitpasswd:",0)===0) 
+            if(input.indexOf("mypass:",0)===0) 
             {
-				//ChristmasTree: "colorbitpasswd:0x23be:0x4200"
+				//ChristmasTree: "mypass:0x23be:0x4200"
                 let pixeloffset1=this.fn_HextoDec(input.substr(12, 6));
                 let pixeloffset2=this.fn_HextoDec(input.substr(19, 6));
                 for (let i = 0; i < 16; ++i) {
