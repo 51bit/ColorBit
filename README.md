@@ -10,6 +10,8 @@ ColorBit is a 5x5 WS2812B RGB LED matrix for micro:bit, the makecode extension c
 ## Basic Usage
 
 ![Alt text](GIF0.gif?raw=true "Basic Usage")
+![Alt text](ku0.PNG?raw=true "showColorIcon")
+![Alt text](ku.PNG?raw=true "showColorIcon")
 
 ## Gif demo
 
