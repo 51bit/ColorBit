@@ -24,6 +24,134 @@ enum BitColors {
     Black = 0x000000
 }
 
+// Images from file microbitconstimage.cpp https://github.com/bbcmicrobit/micropython
+
+enum ColorIcon {
+    //% block="ChristmasTree"
+    //% jres=coloricons.tree
+    ChristmasTree = 0,
+    //% block="heart"
+    //% jres=icons.heart
+    Heart,
+    //% block="small heart"
+    //% jres=icons.smallheart
+    SmallHeart,
+    //% block="yes"
+    //% jres=icons.yes
+    Yes,
+    //% block="no"
+    //% jres=icons.no
+    No,
+    //% block="happy"
+    //% jres=icons.happy
+    Happy,
+    //% block="sad"
+    //% jres=icons.sad
+    Sad,
+    //% block="confused"
+    //% jres=icons.confused
+    Confused,
+    //% block="angry"
+    //% jres=icons.angry
+    Angry,
+    //% block="asleep"
+    //% jres=icons.asleep
+    Asleep,
+    //% block="surprised"
+    //% jres=icons.surprised
+    Surprised,
+    //% block="silly"
+    //% jres=icons.silly
+    Silly,
+    //% block="fabulous"
+    //% jres=icons.fabulous
+    Fabulous,
+    //% block="meh"
+    //% jres=icons.meh
+    Meh,
+    //% block="t-shirt"
+    //% jres=icons.tshirt
+    TShirt,
+    //% block="roller skate"
+    //% jres=icons.rollerskate
+    Rollerskate,
+    //% block="duck"
+    //% jres=icons.duck
+    Duck,
+    //% block="house"
+    //% jres=icons.house
+    House,
+    //% block="tortoise"
+    //% jres=icons.tortoise
+    Tortoise,
+    //% block="butterfly"
+    //% jres=icons.butterfly
+    Butterfly,
+    //% block="stick figure"
+    //% jres=icons.stickfigure
+    StickFigure,
+    //% block="ghost"
+    //% jres=icons.ghost
+    Ghost,
+    //% block="sword"
+    //% jres=icons.sword
+    Sword,
+    //% block="giraffe"
+    //% jres=icons.giraffe
+    Giraffe,
+    //% block="skull"
+    //% jres=icons.skull
+    Skull,
+    //% block="umbrella"
+    //% jres=icons.umbrella
+    Umbrella,
+    //% block="snake"
+    //% jres=icons.snake
+    Snake,
+    //% block="rabbit"
+    //% jres=icons.rabbit
+    Rabbit,
+    //% block="cow"
+    //% jres=icons.cow
+    Cow,
+    //% block="quarter note"
+    //% jres=icons.quarternote
+    QuarterNote,
+    //% block="eigth note"
+    //% jres=icons.eigthnote
+    EigthNote,
+    //% block="pitchfork"
+    //% jres=icons.pitchfork
+    Pitchfork,
+    //% block="target"
+    //% jres=icons.target
+    Target,
+    //% block="triangle"
+    //% jres=icons.triangle
+    Triangle,
+    //% block="left triangle"
+    //% jres=icons.lefttriangle
+    LeftTriangle,
+    //% block="chess board"
+    //% jres=icons.chessboard
+    Chessboard,
+    //% block="diamond"
+    //% jres=icons.diamond
+    Diamond,
+    //% block="small diamond"
+    //% jres=icons.smalldiamond
+    SmallDiamond,
+    //% block="square"
+    //% jres=icons.square
+    Square,
+    //% block="small square"
+    //% jres=icons.smallsquare
+    SmallSquare,
+    //% block="scissors"
+    //% jres=icons.scissors
+    Scissors
+}
+
 /**
  * Different modes for RGB or RGB+W NeoPixel strips
  */
@@ -213,6 +341,65 @@ namespace colorbit {
 			}
 			return dec_num;
 		}
+        
+        /**
+         * Show ColorBit Icon with a given color (range 0-255 for r, g, b). 
+         * @param input LED ColorIcon
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="colorbit_51bit_show_color_icon" block="%colorbit_51bit|show ColorBit Icon %myicon|with %rgb=colorbit_colors" 
+        //% blockGap=8
+        //% weight=100
+        //% parts="colorbit"
+        //% icon.fieldEditor="imagedropdown"
+        //% icon.fieldOptions.columns="5"
+        //% icon.fieldOptions.width="380"
+        //% icon.fieldOptions.maxRows=5
+        showColorIcon(myicon: ColorIcon, rgb: number): void {
+            let str: string = "";
+            if(myicon==0) str="51bitpasswd:0x23be,0x4200";     //ChristmasTree
+            else if(myicon==1) str="51bitpasswd:0x57fe,0xe200";//Heart
+            else if(myicon==2) str="51bitpasswd:0x029c,0x4000";//SmallHeart
+            else if(myicon==3) str="51bitpasswd:0x0045,0x4400";//Yes
+            else if(myicon==3) str="51bitpasswd:0x8a88,0xa880";//No
+            else if(myicon==3) str="51bitpasswd:0x0281,0x1700";//Happy
+            else if(myicon==3) str="51bitpasswd:0x0280,0xe880";//Sad
+            else if(myicon==3) str="51bitpasswd:0x0280,0xaa80";//Confused
+            else if(myicon==3) str="51bitpasswd:0x8a81,0xfa80";//Angry
+            else if(myicon==3) str="51bitpasswd:0x06c0,0xe000";//Asleep
+            else if(myicon==3) str="51bitpasswd:0x5008,0xa200";//Surprised
+            else if(myicon==3) str="51bitpasswd:0x883e,0x3180";//Silly
+            else if(myicon==3) str="51bitpasswd:0xfec0,0xa700";//Fabulous
+            else if(myicon==3) str="51bitpasswd:0xd804,0x4400";//Meh
+            else if(myicon==3) str="51bitpasswd:0xdfdc,0xe700";//TShirt
+            else if(myicon==3) str="51bitpasswd:0x18ff,0xf500";//Rollerskate
+            else if(myicon==3) str="51bitpasswd:0x671e,0xe000";//Duck
+            else if(myicon==3) str="51bitpasswd:0x23be,0xe500";//House
+            else if(myicon==3) str="51bitpasswd:0x03be,0xa000";//Tortoise
+            else if(myicon==3) str="51bitpasswd:0x03be,0xa000";//Butterfly
+            else if(myicon==3) str="51bitpasswd:0x27c8,0xa880";//StickFigure
+            else if(myicon==3) str="51bitpasswd:0x757f,0xfa80";//Ghost
+            else if(myicon==3) str="51bitpasswd:0x2108,0xe200";//Sword
+            else if(myicon==3) str="51bitpasswd:0xc210,0xe500";//Giraffe
+            else if(myicon==3) str="51bitpasswd:0x757e,0xe700";//Skull
+            else if(myicon==3) str="51bitpasswd:0x77c9,0x4e00";//Umbrella
+            else if(myicon==3) str="51bitpasswd:0xc6d4,0xe000";//Snake
+            else if(myicon==3) str="51bitpasswd:0xa53d,0xaf00";//Rabbit
+            else if(myicon==3) str="51bitpasswd:0x8c7e,0xe200";//Cow
+            else if(myicon==3) str="51bitpasswd:0x2109,0xce00";//QuarterNote
+            else if(myicon==3) str="51bitpasswd:0x218b,0xce00";//EigthNote
+            else if(myicon==3) str="51bitpasswd:0xad7e,0x4200";//Pitchfork
+            else if(myicon==3) str="51bitpasswd:0x23b6,0xe200";//Target
+            else if(myicon==3) str="51bitpasswd:0x0115,0xf000";//Triangle
+            else if(myicon==3) str="51bitpasswd:0x8629,0x2f80";//LeftTriangle
+            else if(myicon==3) str="51bitpasswd:0x5555,0x5500";//Chessboard
+            else if(myicon==3) str="51bitpasswd:0x22a2,0xa200";//Diamond
+            else if(myicon==3) str="51bitpasswd:0x0114,0x4000";//SmallDiamond
+            else if(myicon==3) str="51bitpasswd:0xfc63,0x1f80";//Square
+            else if(myicon==3) str="51bitpasswd:0x0394,0xe000";//SmallSquare
+            else if(myicon==2) str="51bitpasswd:0xce89,0xac80";//Scissors
+            this.setStringColor(str,rgb);
+        }
 	
         /**
          * Show ColorBit string with a given color (range 0-255 for r, g, b). 

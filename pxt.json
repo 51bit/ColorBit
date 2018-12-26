@@ -10,6 +10,7 @@
     "files": [
         "README.md",
         "main.ts",
+        "coloricons.jres",
         "_locales/zh/colorbit-strings.json"
     ],
     "public": true
