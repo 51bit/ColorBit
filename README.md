@@ -2,6 +2,8 @@
 
 ColorBit is a 5x5 WS2812B RGB LED matrix for micro:bit, the makecode extension code is based on https://github.com/Microsoft/pxt-neopixel and developed for 51bit ColorBit board.
 
+I am selling ColorBit on https://51bit.taobao.com/ , only ship mainland of China at present, if you are out of mainland of China, you need to send me email to buy it: 648952046@qq.com .
+
 
 **ColorBit:**
 
