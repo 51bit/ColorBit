@@ -149,7 +149,16 @@ enum ColorIcon {
     SmallSquare,
     //% block="scissors"
     //% jres=icons.scissors
-    Scissors
+    Scissors,
+    //% block="fill full"
+    //% jres=coloricons.full
+    FillFull,
+    //% block="fill circle"
+    //% jres=coloricons.fillCircle
+    FillCircle,
+    //% block="circle"
+    //% jres=coloricons.circle
+    Circle,
 }
 
 /**
@@ -398,6 +407,9 @@ namespace colorbit {
             else if(myicon==38) str="51bitpasswd:0xfc63,0x1f80";//Square
             else if(myicon==39) str="51bitpasswd:0x0394,0xe000";//SmallSquare
             else if(myicon==40) str="51bitpasswd:0xce89,0xac80";//Scissors
+            else if(myicon==41) str="51bitpasswd:0xffff,0xff80";//FillFull
+            else if(myicon==42) str="51bitpasswd:0x77ff,0xf700";//FillCircle
+            else if(myicon==43) str="51bitpasswd:0x7463,0x1700";//Circle
             this.setStringColor(str,rgb);
         }
 	
