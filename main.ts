@@ -159,6 +159,18 @@ enum ColorIcon {
     //% block="circle"
     //% jres=coloricons.circle
     Circle,
+    //% block="up"
+    //% jres=coloricons.up
+    Up,
+    //% block="down"
+    //% jres=coloricons.down
+    Down,
+    //% block="left"
+    //% jres=coloricons.left
+    Left,
+    //% block="right"
+    //% jres=coloricons.right
+    Right
 }
 
 /**
@@ -410,6 +422,10 @@ namespace colorbit {
             else if(myicon==41) str="51bitpasswd:0xffff,0xff80";//FillFull
             else if(myicon==42) str="51bitpasswd:0x77ff,0xf700";//FillCircle
             else if(myicon==43) str="51bitpasswd:0x7463,0x1700";//Circle
+            else if(myicon==44) str="51bitpasswd:0x23aa,0x4200";//Up
+            else if(myicon==45) str="51bitpasswd:0x212a,0xe200";//Down
+            else if(myicon==46) str="51bitpasswd:0x223e,0x8200";//Left
+            else if(myicon==47) str="51bitpasswd:0x20be,0x2200";//Right
             this.setStringColor(str,rgb);
         }
 	
