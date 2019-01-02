@@ -426,7 +426,7 @@ namespace colorbit {
             else if(myicon==45) str="51bitpasswd:0x212a,0xe200";//Down
             else if(myicon==46) str="51bitpasswd:0x223e,0x8200";//Left
             else if(myicon==47) str="51bitpasswd:0x20be,0x2200";//Right
-            this.setStringColor(str,rgb);
+            this.showStringColor(str,rgb);
         }
 	
         /**
@@ -434,11 +434,11 @@ namespace colorbit {
          * @param input LED string showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_51bit_set_string_color" block="%colorbit_51bit|show ColorBit string %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_show_string_color" block="%colorbit_51bit|show ColorBit string %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
-        setStringColor(input: string, rgb: number): void {
+        showStringColor(input: string, rgb: number): void {
             if(input.indexOf("51bitpasswd:",0)===0) 
             {
 				//ChristmasTree: "51bitpasswd:0x23be:0x4200"
@@ -513,11 +513,11 @@ namespace colorbit {
          * @param input LED string showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_51bit_set_scrollstring_color" block="%colorbit_51bit|show ColorBit scroll string %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_show_scrollstring_color" block="%colorbit_51bit|show ColorBit scroll string %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=99
         //% parts="colorbit"
-        setScrollStringColor(input: string, rgb: number): void {
+        showScrollStringColor(input: string, rgb: number): void {
             if (input == '') return;
             input = ' '+ input + ' ';
             for (let chindex = 0; chindex < input.length-1; chindex++) {
@@ -571,16 +571,16 @@ namespace colorbit {
          * @param input LED number showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_51bit_set_int_color" block="%colorbit_51bit|show ColorBit number %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_show_int_color" block="%colorbit_51bit|show ColorBit number %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=100
         //% parts="colorbit"
-        setIntColor(input: number, rgb: number): void {
+        showIntColor(input: number, rgb: number): void {
             let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
             let indexl=0;
             if(input==0)
             {
-                this.setStringColor("0", rgb);
+                this.showStringColor("0", rgb);
                 return;
             }
             while(input>=1)
@@ -593,7 +593,7 @@ namespace colorbit {
             while(--indexl>=0) 
             {
                 let y=a[indexl];
-                if((y>=0) && (y<=9)) this.setStringColor(''+y, rgb);
+                if((y>=0) && (y<=9)) this.showStringColor(''+y, rgb);
             }
         }
 		
@@ -602,17 +602,17 @@ namespace colorbit {
          * @param input LED int showing
          * @param rgb RGB color of the LED
          */
-        //% blockId="colorbit_51bit_set_scrollint_color" block="%colorbit_51bit|show ColorBit scroll int %input|with %rgb=colorbit_colors" 
+        //% blockId="colorbit_51bit_show_scrollint_color" block="%colorbit_51bit|show ColorBit scroll int %input|with %rgb=colorbit_colors" 
         //% blockGap=8
         //% weight=99
         //% parts="colorbit"
-        setScrollIntColor(input: number, rgb: number): void {
+        showScrollIntColor(input: number, rgb: number): void {
             let a: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0];
             let str: string = "";
             let indexl=0;
             if(input==0)
             {
-                this.setStringColor("0", rgb);
+                this.showStringColor("0", rgb);
                 return;
             }
             while(input>=1)
@@ -627,7 +627,7 @@ namespace colorbit {
                 let y=a[indexl];
                 if((y>=0) && (y<=9)) str = str+ y;
             }
-			this.setScrollStringColor(str, rgb);
+			this.showScrollStringColor(str, rgb);
 		}
 
         /**

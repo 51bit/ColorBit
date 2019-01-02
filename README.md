@@ -20,7 +20,7 @@ input.onButtonPressed(Button.AB, function () {
     colorbit_51bit.setMultiColor(false)
 })
 input.onButtonPressed(Button.B, function () {
-    colorbit_51bit.setScrollStringColor("ABC#$123", colorbit.colors(BitColors.Red))
+    colorbit_51bit.showScrollStringColor("ABC#$123", colorbit.colors(BitColors.Red))
 })
 colorbit_51bit = colorbit.initColorBit(DigitalPin.P0, BitColorMode.RGB)
 basic.forever(function () {
@@ -34,7 +34,7 @@ Use ``||showColorIcon||`` to show ColorBit icons.
 
 Use ``||setMultiColor||`` to set multiple color per light.
 
-Use ``||setScrollStringColor||`` to show scroll colorful string in ColorBit. 
+Use ``||showScrollStringColor||`` to show scroll colorful string in ColorBit. 
 
 ![Alt text](GIF0.gif?raw=true "Basic Usage")
 ![Alt text](ku0.PNG?raw=true "showColorIcon")
