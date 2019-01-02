@@ -11,6 +11,31 @@ I am selling ColorBit on https://51bit.taobao.com/ , only ship mainland of China
 
 ## Basic Usage
 
+```blocks
+let colorbit_51bit: colorbit.Strip = null
+input.onButtonPressed(Button.A, function () {
+    colorbit_51bit.showColorIcon(ColorIcon.ChristmasTree, colorbit.colors(BitColors.Red))
+})
+input.onButtonPressed(Button.AB, function () {
+    colorbit_51bit.setMultiColor(false)
+})
+input.onButtonPressed(Button.B, function () {
+    colorbit_51bit.setScrollStringColor("ABC#$123", colorbit.colors(BitColors.Red))
+})
+colorbit_51bit = colorbit.initColorBit(DigitalPin.P0, BitColorMode.RGB)
+basic.forever(function () {
+
+})
+```
+
+Use ``||initColorBit||`` to init ColorBit.
+
+Use ``||showColorIcon||`` to show ColorBit icons.
+
+Use ``||setMultiColor||`` to set multiple color per light.
+
+Use ``||setScrollStringColor||`` to show scroll colorful string in ColorBit. 
+
 ![Alt text](GIF0.gif?raw=true "Basic Usage")
 ![Alt text](ku0.PNG?raw=true "showColorIcon")
 ![Alt text](ku.PNG?raw=true "showColorIcon")
