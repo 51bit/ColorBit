@@ -349,19 +349,19 @@ namespace colorbit {
             this.ismulticolor=yes;
         }
 
-		fn_HextoDec(hex_num: string): number {
-			let dec_num = 0;
-			let hex_arr = "0123456789abcdef";
-			for (let index = 0; index <= hex_num.length - 1; index++) {
-				let char = hex_num.charAt(hex_num.length - 1 - index);
-				for (let index2 = 0; index2 <= 15; index2++) {
-					if (char.compare(hex_arr.charAt(index2)) == 0) {
-						dec_num = dec_num + index2 * Math.pow(16, index);
-					}
-				}
-			}
-			return dec_num;
-		}
+        fn_HextoDec(hex_num: string): number {
+            let dec_num = 0;
+            let hex_arr = "0123456789abcdef";
+            for (let index = 0; index <= hex_num.length - 1; index++) {
+                let char = hex_num.charAt(hex_num.length - 1 - index);
+                for (let index2 = 0; index2 <= 15; index2++) {
+                    if (char.compare(hex_arr.charAt(index2)) == 0) {
+                        dec_num = dec_num + index2 * Math.pow(16, index);
+                    }
+                }
+            }
+            return dec_num;
+        }
         
         /**
          * Show ColorBit Icon with a given color (range 0-255 for r, g, b). 
@@ -428,7 +428,7 @@ namespace colorbit {
             else if(myicon==47) str="51bitpasswd:0x20be,0x2200";//Right
             this.showStringColor(str,rgb);
         }
-	
+    
         /**
          * Show ColorBit string with a given color (range 0-255 for r, g, b). 
          * @param input LED string showing
@@ -441,7 +441,7 @@ namespace colorbit {
         showStringColor(input: string, rgb: number): void {
             if(input.indexOf("51bitpasswd:",0)===0) 
             {
-				//ChristmasTree: "51bitpasswd:0x23be:0x4200"
+                //ChristmasTree: "51bitpasswd:0x23be:0x4200"
                 let pixeloffset1=this.fn_HextoDec(input.substr(12, 6));
                 let pixeloffset2=this.fn_HextoDec(input.substr(19, 6));
                 for (let i = 0; i < 16; ++i) {
@@ -596,8 +596,8 @@ namespace colorbit {
                 if((y>=0) && (y<=9)) this.showStringColor(''+y, rgb);
             }
         }
-		
-		/**
+        
+        /**
          * Show ColorBit Scroll int with a given color (range 0-255 for r, g, b). 
          * @param input LED int showing
          * @param rgb RGB color of the LED
@@ -627,9 +627,30 @@ namespace colorbit {
                 let y=a[indexl];
                 if((y>=0) && (y<=9)) str = str+ y;
             }
-			this.showScrollStringColor(str, rgb);
-		}
+            this.showScrollStringColor(str, rgb);
+        }
 
+        /**
+         * Set LED to a given color (range 0-255 for r, g, b) in ColorBit
+         * @param x horizontal position
+         * @param y horizontal position
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="colorbit_draw_colorbit" block="%colorbit_51bit|draw ColorBit at x %x|y %y|to %rgb=colorbit_colors" 
+        //% weight=20
+        //% parts="colorbit"
+        drawColorBit(x: number, y: number, rgb: number) {
+            if (this._matrixWidth <= 0) return; // not a matrix, ignore
+            x = x >> 0;
+            y = y >> 0;
+            rgb = rgb >> 0;
+            const cols = Math.idiv(this._length, 5);
+            if (x < 0 || x >= 5 || y < 0 || y >= cols) return;
+            let i = x + y * 5;
+            this.setPixelColor(i, rgb);
+            this.show();
+        }
+        
         /**
          * Shows a rainbow pattern on all LEDs. 
          * @param startHue the start hue value for the rainbow, eg: 1

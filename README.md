@@ -7,7 +7,7 @@ I am selling ColorBit on https://51bit.taobao.com/ , only ship mainland of China
 
 **ColorBit:**
 
-![Alt text](icon.png?raw=true "ColorBit picture")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/icon.png?raw=true "ColorBit picture")
 
 ## Basic Usage
 
@@ -36,17 +36,17 @@ Use ``||setMultiColor||`` to set multiple color per light.
 
 Use ``||showScrollStringColor||`` to show scroll colorful string in ColorBit. 
 
-![Alt text](GIF0.gif?raw=true "Basic Usage")
-![Alt text](ku0.PNG?raw=true "showColorIcon")
-![Alt text](ku.PNG?raw=true "showColorIcon")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/GIF0.gif?raw=true "Basic Usage")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/ku0.PNG?raw=true "showColorIcon")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/ku.PNG?raw=true "showColorIcon")
 
 ## Gif demo
 
 ### Show single color string
-![Alt text](GIF1.gif?raw=true "Demo 1")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/GIF1.gif?raw=true "Demo 1")
 
 ### Show multiple color string
-![Alt text](GIF2.gif?raw=true "Demo 2")
+![Alt text](https://github.com/51bit/ColorBit/raw/master/GIF2.gif?raw=true "Demo 2")
 
 ## Supported targets
 
