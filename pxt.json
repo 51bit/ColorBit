@@ -1,6 +1,6 @@
 {
     "name": "colorbit",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "51bit ColorBit",
     "license": "MIT",
     "dependencies": {
