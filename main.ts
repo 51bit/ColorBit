@@ -287,7 +287,19 @@ namespace colorbit {
         [0xc218,0x8c00], //125: }
         [0x18,0x3000]    //126: ~
     ];
-    
+    let WFONT = [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+        [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        [1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+        [1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+        [1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+        [1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 0, 1, 1, 1]
+    ]
+	
     /**
      * A NeoPixel strip
      */
@@ -970,6 +982,37 @@ namespace colorbit {
             }
             return Math.idiv(this.length(), 2) /* 0.5mA per colorbit */
                 + Math.idiv(p * 433, 10000); /* rought approximation */
+        }
+
+        /**
+         * Show ColorBit WhaleySansFont number with a given front color (range 0-255 for r, g, b) and a given background color. 
+         * @param dat LED number showing
+         * @param rgbFront Front RGB color of the LED
+         * @param rgbBackground rgbBackground RGB color of the LED
+         */
+        //% blockId="colorbit_51bit_show_whaleysansfont_color" block="%colorbit_51bit|show ColorBit WhaleySansFont number %dat|with front %rgbFront=colorbit_colors|with background %rgbBackground=colorbit_colors" 
+        //% blockGap=8
+        //% weight=11
+        //% parts="colorbit"
+        //% dat.min=0 dat.max=99
+        showWhaleySansFontColor(dat: number, rgbFront: number, rgbBackground: number): void {
+                if(dat<0) dat=0;
+                rgbFront = rgbFront >> 0;
+                rgbBackground = rgbBackground >> 0;
+
+                let a = WFONT[Math.idiv(dat, 10) % 10];
+                let b = WFONT[dat % 10];
+
+                for (let i = 0; i < 5; i++) {
+                    for (let j=0; j<5; j++) this.setPixelColor(i*5+j, rgbBackground);
+                }
+                for (let i = 0; i < 5; i++) {
+                    if(1 == a[i * 2])this.setPixelColor(i*5,rgbFront);
+                    if(1 == a[i * 2 + 1])this.setPixelColor((1+i*5),rgbFront);
+                    if(1 == b[i * 2])this.setPixelColor((3+i*5),rgbFront);
+                    if(1 == b[i * 2 + 1])this.setPixelColor((4+i*5),rgbFront);
+                }
+                this.show();
         }
 
         private setBufferRGB(offset: number, red: number, green: number, blue: number): void {

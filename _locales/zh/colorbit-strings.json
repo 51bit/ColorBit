@@ -83,6 +83,7 @@
   "colorbit.Strip.shift|block": "%colorbit_51bit|移动像素 偏移量%offset",
   "colorbit.Strip.rotate|block": "%colorbit_51bit|循环像素 偏移量%offset",
   "colorbit.Strip.power|block": "%colorbit_51bit| 电流(mA)",
+  "colorbit.Strip.showWhaleySansFontColor|block": "%colorbit_51bit|显示 ColorBit WhaleySansFont 数字： %dat|且字体颜色为 %rgbFront=colorbit_colors|且背景颜色为 %rgbBackground=colorbit_colors",
   "colorbit.initColorBit|block": "ColorBit leds 在引脚： %pin| 且模式为 %mode",
   "colorbit.hsl|block": "色相 %h|饱和度 %s|亮度 %l",
   "colorbit.setMatrixWidth|block": "%colorbit_51bit|设置矩阵宽度 %width",
